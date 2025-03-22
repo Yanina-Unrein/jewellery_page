@@ -1,0 +1,114 @@
+---
+import { loadTranslations } from "../i18n/ui";
+import BtnLayout from "./BtnLayout.astro";
+
+
+const { lang } = Astro.params;
+const translations = loadTranslations(lang);
+---
+
+<section>
+    <div class="about-container">
+      <div>
+        <picture class="logo-container">
+            <img src={translations.about.logo} alt={translations.about.alt}>
+        </picture>
+      </div>
+        <div class="content-about-container">
+            <div class="logo-section">
+                <picture class="melo-img-container">
+                    <img src="/mansonry/image-11.svg" alt="">
+                </picture>
+            </div>
+            <div class="content-about">
+                <h2>{translations.about.title}</h2>
+               {/* Iterar sobre los párrafos */}
+                {translations.about.paragraphs.map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                ))}
+                <BtnLayout text={translations.about.btn_cta} color="var(--golden-sand)" />
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<style>
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 60px 10px;
+    background: linear-gradient(180deg, rgba(250, 244, 239, 0.6) 0%, rgba(230, 203, 168, 0.6) 49.77%);
+}
+
+.about-container{
+    max-width: 1240px
+}
+
+.logo-container {
+  display: block;
+  margin: 0 auto;
+  width: 100%; 
+  max-width: 300px; 
+  height: auto;
+}
+
+.logo-container img {
+  width: 100%;
+  height: auto;
+}
+.content-about-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+}
+
+.logo-section{
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+.melo-img-container {
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+}
+
+.melo-img-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; 
+  border-radius: 8px;
+}
+
+.content-about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    flex: 1;
+    gap: 20px;
+}
+
+p{
+    margin: 0;
+    width: 90%;
+    font-size: clamp(1rem, 0.9825rem + 0.0877vw, 1.125rem);
+}
+
+@media(width > 659px) {
+    .content-about-container{
+        flex-direction: row;
+        padding-top: 60px;
+    }
+}
+
+</style>

@@ -1,0 +1,50 @@
+---
+import { languages, defaultLang } from '../i18n/ui';
+
+const { currentLang } = Astro.props;  // Recibe el idioma actual
+const currentPath = Astro.url.pathname;
+
+function getLanguageUrl(lang: string) {
+  if (lang === defaultLang) {
+    const newPath = currentPath.replace(/^\/[^/]+/, '') || '/';
+    return newPath;
+  } else {
+    const path = currentPath.replace(/^\/[^/]+/, '');
+    const newUrl = `/${lang}${path}`;
+    return newUrl;
+  }
+}
+---
+
+<!-- Solo un enlace para cambiar de idioma -->
+<div class="language-selector">
+  <a 
+    href={getLanguageUrl(currentLang === 'es' ? 'en' : 'es')} 
+    class="lang-link"
+  >
+    <img class="language-icon" src="/icons/language.svg" alt="Language Icon" />
+    {currentLang === 'es' ? 'ES' : 'EN'}  
+  </a>
+</div>
+
+<style>
+  .lang-link {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    color: var(--coffee-brown);
+    cursor: pointer;
+  }
+
+  .lang-link:hover{
+    color: var(--walnut);
+  }
+
+  .language-icon {
+    width: 40px;
+    height: auto;
+    margin-right: 0.5rem;
+  }
+</style>

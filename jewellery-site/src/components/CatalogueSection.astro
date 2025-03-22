@@ -1,0 +1,39 @@
+---
+import { loadTranslations } from "../i18n/ui";
+import CategoriesGallery from "./CategoriesGallery.astro";
+import Mansonry from "./Mansonry.astro";
+
+
+const { lang } = Astro.params;
+const translations = loadTranslations(lang);
+---
+
+<section class="catalogue-container">
+    <div>
+        <h1>{translations.catalogue.title}</h1>
+    </div>
+    <div class="mansory-container">
+        <Mansonry />
+    </div>
+    <div class="view-category">
+        <CategoriesGallery />
+    </div>
+</section>
+
+
+<style>
+    .catalogue-container{
+        margin: 0;
+        padding: 60px 10px;
+        background: linear-gradient(180deg, #F7E7CE 0%, #C3A776 100%);
+    }
+
+    h1{
+        margin: 0;
+        text-align: center;
+        font-family: var(--font-secondary);
+        font-weight: 400;
+        color: var(--black);
+    }
+
+</style>

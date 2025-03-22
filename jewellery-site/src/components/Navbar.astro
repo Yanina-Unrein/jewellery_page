@@ -1,0 +1,15 @@
+---
+import LanguageSelector from "./LanguageSelector.astro";
+import NavbarReact from "./navbar/NavbarReact";
+import { defaultLang } from "../i18n/ui";
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.split("/")[1]; 
+const currentLang = ["en", "es"].includes(lang) ? lang : defaultLang; 
+
+console.log("📌 Idioma detectado en Layout:", currentLang);
+---
+
+<NavbarReact lang={currentLang} client:load>
+    <LanguageSelector currentLang={currentLang} />
+</NavbarReact>

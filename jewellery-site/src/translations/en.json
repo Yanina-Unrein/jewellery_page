@@ -1,0 +1,27 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About Melo",
+    "gallery": "Catalog",
+    "contact": "Contact",
+    "logo": "/iconLogo/logo_nombre.svg",
+    "alt": "Melo Jewelry Logo",
+    "icon-burger": "/icons/menu-navbar.svg",
+    "alt-icon-burger": "Icon to open menu",
+    "icon-burger-close": "/icons/close-menu.svg",
+    "alt-icon-burger-close": "Icon to close menu"
+  },
+  "hero":{
+      "logo": "/iconLogo/logo_black_completo.svg",
+      "alt": "Melo Jewelry Logo",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sollicitudin nisl neque, ut aliquam mauris aliquam nec.",
+      "btn_cta": "Discover more on our Instagram"
+  },
+  "catalogue":{
+    "title": "Conoce algunas de nuestras piezas únicas hechas a mano"
+  },
+  "references":{
+    "title":"Experiencias que Brillan"
+  } 
+  
+}

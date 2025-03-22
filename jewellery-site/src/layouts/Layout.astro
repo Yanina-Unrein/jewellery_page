@@ -1,0 +1,51 @@
+---
+const { lang } = Astro.props;
+
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+		<title>Melo Jewelry</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style>
+    :root {
+      /* 🎨 Colores */
+	  	--golden-sand: #C3A776; 
+		--linen: #EDE0D4;        
+		--coffee-brown: #89644C; 
+		--beige: #F8F5F2;
+		--walnut: #5A4A42;      
+		--black: #333333;
+		--white: #ffffff;
+
+      --font-primary: 'Roboto', sans-serif;
+      --font-secondary: 'Poppins', sans-serif;
+    }
+
+	html,
+    body {
+      font-family: var(--font-primary);
+      margin: 0;
+      padding: 0;
+	  box-sizing: border-box;
+    }
+
+	h2{
+		font-family: var(--font-secondary);
+		font-size: clamp(1.5rem, 1.4309rem + 0.6579vw, 2.5rem);
+		margin: 0;
+	}
+</style>

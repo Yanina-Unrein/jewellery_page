@@ -1,0 +1,39 @@
+{
+    "navbar": {
+        "home": "Inicio",
+        "about": "Sobre Melo",
+        "gallery": "Cátalogo",
+        "contact": "Contacto",
+        "logo": "/iconLogo/logo_nombre.svg", 
+        "alt": "Logo Melo joyeria",
+        "icon-burger": "/icons/menu-navbar.svg",
+        "alt-icon-burger": "icon abrir menú",
+        "icon-burger-close": "/icons/close-menu.svg",
+        "alt-icon-burger-close": "icon cerrar menú"
+    },
+   "hero": {
+        "logo": "/iconLogo/logo_black_completo.svg",
+        "alt": "Logo Joyeria Melo",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sollicitudin nisl neque, ut aliquam mauris aliquam nec.",  
+        "btn_cta": "Descubre más en nuestro Instagram"
+    },
+    "catalogue":{
+        "title": "Conoce algunas de nuestras piezas únicas hechas a mano",
+        "categories": ["Anillos", "Pulseras", "Collares", "Sets", "Llamadores de ángeles"]
+    },
+    "about":{
+        "logo": "/iconLogo/logo_gold_completo.svg", 
+        "alt-logo": "Logo Melo joyeria",
+        "alt-img": "",
+        "title":"Cada Joya Cuenta una Historia",
+        "paragraphs":
+        [
+            "Desde hace generaciones, en nuestra joyería creamos piezas únicas que celebran la belleza y el arte. Cada joya es diseñada con pasión y precisión, fusionando materiales nobles con un diseño atemporal. Más que accesorios, nuestras creaciones son recuerdos que trascienden el tiempo.",
+            "Desde hace generaciones, en nuestra joyería creamos piezas únicas que celebran la belleza y el arte. Cada joya es diseñada con pasión y precisión, fusionando materiales nobles con un diseño atemporal. Más que accesorios, nuestras creaciones son recuerdos que trascienden el tiempo."
+        ],
+        "btn_cta":"Descubre más en nuestro Instagram"
+    },
+    "references":{
+        "title":"Experiencias que Brillan"
+    }
+}

@@ -1,0 +1,222 @@
+---
+const categories = [
+  { id: 'rings', name: 'Anillos', images: [
+    'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500',
+    'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=500',
+    'https://images.unsplash.com/photo-1608042314453-ae338d80c427?w=500',
+  ]},
+  { id: 'necklaces', name: 'Collares', images: [
+    'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500',
+    'https://images.unsplash.com/photo-1630019852942-f89202989a59?w=500',
+    'https://images.unsplash.com/photo-1601821765780-754fa98637c1?w=500',
+  ]},
+  { id: 'bracelets', name: 'Pulseras', images: [
+    'https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=500',
+    'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=500',
+    'https://images.unsplash.com/photo-1626784215021-2e39ccf971cd?w=500',
+  ]},
+  { id: 'sets', name: 'Sets', images: [
+    'https://images.unsplash.com/photo-1620656798579-1984d9e87df7?w=500',
+    'https://images.unsplash.com/photo-1633810542706-90e5ff7557be?w=500',
+    'https://images.unsplash.com/photo-1635767798638-3e25273a8236?w=500',
+  ]},
+  { id: 'angel-callers', name: 'Llamadores de Ángeles', images: [
+    'https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=500',
+    'https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=500',
+    'https://images.unsplash.com/photo-1598560917505-59a3ad559071?w=500',
+  ]},
+];
+---
+
+<div class="jewelry-categories">
+  <div class="categories-container">
+    <div class="mobile-categories">
+      <div class="carousel">
+        {categories.map(category => (
+          <button 
+            class="category-button" 
+            data-category={category.id}
+          >
+            {category.name}
+          </button>
+        ))}
+      </div>
+    </div>
+    <div class="desktop-categories">
+      {categories.map(category => (
+        <button 
+          class="category-button" 
+          data-category={category.id}
+        >
+          {category.name}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  {categories.map(category => (
+    <div class="gallery" id={`gallery-${category.id}`}>
+      {category.images.map(image => (
+        <img src={image} alt={category.name} loading="lazy" />
+      ))}
+    </div>
+  ))}
+</div>
+
+<script>
+  type CategoryId = string | null;
+
+  const initializeCategories = (): void => {
+    const buttons = document.querySelectorAll<HTMLButtonElement>('.category-button');
+    const galleries = document.querySelectorAll<HTMLDivElement>('.gallery');
+    let activeCategory: CategoryId = null;
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const categoryId = button.getAttribute('data-category');
+        const targetGallery = document.getElementById(`gallery-${categoryId}`);
+
+        if (!targetGallery) return;
+
+        if (activeCategory === categoryId) {
+          targetGallery.classList.remove('active');
+          button.classList.remove('active');
+          activeCategory = null;
+        } else {
+          galleries.forEach(gallery => gallery.classList.remove('active'));
+          buttons.forEach(btn => btn.classList.remove('active'));
+          targetGallery.classList.add('active');
+          button.classList.add('active');
+          activeCategory = categoryId;
+        }
+      });
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', initializeCategories);
+</script>
+
+<style>
+  .jewelry-categories {
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .categories-container {
+    padding-bottom: 1rem;
+  }
+
+  .category-button {
+    opacity: 1 !important; 
+    background: none;
+    color: var(--black);
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin: 0.5rem;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+    transform: none !important;
+    white-space: normal; 
+    word-wrap: break-word; 
+    word-break: break-word; 
+    max-width: 150px;
+    min-height: 50px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .category-button:hover,
+  .category-button.active {
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    background: #5a4a42a8;
+    color: var(--linen);
+    opacity: 1; 
+  }
+
+  .gallery {
+    display: none;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .gallery.active {
+    display: grid;
+    opacity: 1;
+  }
+
+  .gallery img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 500px) {
+    .desktop-categories {
+      display: none;
+    }
+
+    .mobile-categories {
+      overflow: hidden;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 1rem;
+      gap: 0.5rem;
+      scrollbar-width: none; 
+      -ms-overflow-style: none; 
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none; 
+    }
+
+    .carousel .category-button {
+      scroll-snap-align: center;
+      margin: 0;
+      padding: 0.8rem 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .gallery {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery img {
+      height: 200px;
+    }
+  }
+
+
+  @media (min-width: 501px) {
+    .mobile-categories {
+      display: none;
+    }
+
+    .desktop-categories {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+</style>
+

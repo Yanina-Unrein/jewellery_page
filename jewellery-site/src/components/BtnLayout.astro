@@ -1,0 +1,33 @@
+---
+interface Props {
+  text: string;
+  color: string; // Color opcional
+}
+
+const { text, color = "var(--golden-sand)" } = Astro.props;
+---
+
+<style>
+.btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: var(--black);
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+</style>
+
+<button class="btn" style={`background: ${color};`}>
+  {text}
+</button>
+
+
+
+

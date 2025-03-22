@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { loadTranslations } from '../../i18n/ui';
+import Hero from '../../components/Hero.astro';
+import Navbar from '../../components/Navbar.astro';
+import CatalogueSection from '../../components/CatalogueSection.astro';
+import About from '../../components/About.astro';
+import ReferencesSection from '../../components/ReferencesSection.astro';
+
+
+const { lang } = Astro.params;
+const currentLang = lang && ["en", "es"].includes(lang) ? lang : 'es'; 
+
+
+const translations = await loadTranslations(currentLang);
+
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+  ];
+}
+---
+
+<Layout lang={currentLang}>
+	<header>
+		<Navbar />
+	</header>
+	<Hero />
+	<main>
+		<CatalogueSection />
+		<About />
+		<ReferencesSection />
+	</main>
+</Layout>
