@@ -1,12 +1,9 @@
 ---
 import { loadTranslations } from "../i18n/ui";
-import CardReference from "./CardReference.astro";
+import Carousel from "./carrouselReferences/Carrousel";
 
 const { lang } = Astro.params;
 const translations = loadTranslations(lang);
-
-const images = imagesData.images;
-
 ---
 
 <section>
@@ -15,42 +12,41 @@ const images = imagesData.images;
             <h2>{translations.references.title}</h2>
         </div>
         <div class="cards-container">
-            <div class="carousel">
-                {images.map((image, index) => (
-                  <CardReference key={index} altimg={`Testimonio ${index + 1}`} image={image} />
-                ))}
-            </div>
+            <Carousel translations={translations} />
         </div>
     </div>
 </section>
 
+
+
 <style>
     section {
-        position: relative; 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-image: url("/img/hero-jewellery.webp");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        width: 100%;
-        margin: 0;
-        padding: 60px 10px;
-        min-height: 400px; 
+        position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/img/hero-jewellery.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    margin: 0;
+    padding: 60px 10px;
+    min-height: 500px; /* Ajusta esta altura si es necesario */
+    box-sizing: border-box; /* Asegura que el padding no cause desbordamiento */
     }
 
     .content-container {
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        flex-direction: column;
         position: absolute; 
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         background: rgba(137, 100, 76, 0.664);
-        display: flex;
-        justify-content: center;
-        align-items: center; 
-        flex-direction: column;
     }
 
     h2{
@@ -63,26 +59,7 @@ const images = imagesData.images;
     .cards-container {
         width: 100%;
         overflow: hidden;
+        position: relative;
     }
 
-    .carousel {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        padding: 1rem;
-        gap: 1rem;
-        scrollbar-width: none;
-    }
-
-    .carousel::-webkit-scrollbar {
-        display: none;
-    }
-
-    @media (min-width: 501px) {
-        .carousel {
-        justify-content: center;
-        flex-wrap: wrap;
-        }
-    }
 </style>

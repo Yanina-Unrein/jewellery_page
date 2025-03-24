@@ -1,0 +1,25 @@
+.card {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    text-align: center;
+    background: var(--white);
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Asegura que la card ocupe el 100% del espacio disponible */
+    max-width: 300px; /* Limita el tamaño máximo si es necesario */
+  }
+  
+  .card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Asegura que la imagen no se deforme */
+    border-radius: 8px;
+  }
+  
+  @media (min-width: 501px) {
+    .card img {
+      width: 300px; /* Asegura que las imágenes sean más grandes en pantallas más grandes */
+      height: 350px;
+    }
+  }

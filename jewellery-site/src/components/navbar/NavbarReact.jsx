@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'preact/hooks';
+import { useState, useEffect } from 'react';
 import { loadTranslations } from "../../i18n/ui";
 import './navbar.css';
 
@@ -6,27 +6,34 @@ const NavbarReact = ({ lang, children }) => {
   const translations = loadTranslations(lang);
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false); // Estado para saber si es móvil
+  const [isClient, setIsClient] = useState(false); // Estado para controlar la renderización en cliente
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   useEffect(() => {
     // Solo ejecutar esta lógica en el cliente
-    setIsMobile(window.innerWidth <= 800);
+    setIsClient(true); // Habilita la renderización en cliente
 
     // Actualizar el estado cuando cambie el tamaño de la ventana
     const handleResize = () => setIsMobile(window.innerWidth <= 800);
     window.addEventListener('resize', handleResize);
+    handleResize(); // Llamar al resize para ajustar al tamaño inicial
     return () => window.removeEventListener('resize', handleResize);
   }, []); // Este efecto solo se ejecutará una vez después del primer renderizado en el cliente
 
+  // Evitar renderizar nada hasta que sea en el cliente (para evitar problemas de hidratación)
+  if (!isClient) {
+    return null;
+  }
+
   return (
-    <nav class="navbar">
+    <nav className="navbar">
       {/* Navbar Mobile */}
-      <div class="navbar-mobile">
-        <a href class="logo-container-navbar-mobile">
-          <img src={translations.navbar.logo} alt={translations.navbar.alt} class="logo-navbar-mobile" />
+      <div className="navbar-mobile">
+        <a href="#" className="logo-container-navbar-mobile">
+          <img src={translations.navbar.logo} alt={translations.navbar.alt} className="logo-navbar-mobile" />
         </a>
-        <button class="menu-btn" onClick={toggleMenu} aria-label="Toggle menu">
+        <button className="menu-btn" onClick={toggleMenu} aria-label="Toggle menu">
           <img
             src={isOpen ? translations.navbar["icon-burger-close"] : translations.navbar["icon-burger"]}
             alt={isOpen ? translations.navbar["alt-icon-burger-close"] : translations.navbar["alt-icon-burger"]}
@@ -45,23 +52,22 @@ const NavbarReact = ({ lang, children }) => {
         {isMobile && <li className="language-button">{children}</li>}
       </ul>
 
-
       {/* Navbar Desktop */}
-      <div class="navbar-desktop">
-        <ul class="menu-left">
+      <div className="navbar-desktop">
+        <ul className="menu-left">
           <li><a href="#">{translations.navbar.home}</a></li>
           <li><a href="#">{translations.navbar.about}</a></li>
         </ul>
-        <a href class="logo-container-navbar">
-          <img src={translations.navbar.logo} alt={translations.navbar.alt} class="logo-navbar" />
+        <a href="#" className="logo-container-navbar">
+          <img src={translations.navbar.logo} alt={translations.navbar.alt} className="logo-navbar" />
         </a>
-        <div class="navbar-right">
-          <ul class="menu-right">
+        <div className="navbar-right">
+          <ul className="menu-right">
             <li><a href="#">{translations.navbar.gallery}</a></li>
             <li><a href="#">{translations.navbar.contact}</a></li>
           </ul>
           {/* Selector de idioma en Desktop */}
-          <div class="language-selector-desktop">
+          <div className="language-selector-desktop">
             {children}
           </div>
         </div>

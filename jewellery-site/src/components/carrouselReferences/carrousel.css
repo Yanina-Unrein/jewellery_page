@@ -1,0 +1,16 @@
+
+.mySwiper {
+    width: 100%;  /* Asegúrate de que el Swiper ocupe todo el ancho disponible */
+    height: auto; /* Asegura que la altura también sea dinámica */
+  }
+  
+  .swiper-slide {
+    display: flex;
+    justify-content: center;  /* Centra las imágenes dentro del slide */
+    align-items: center;
+  }
+  
+  .card {
+    flex: 0 0 auto; /* Evita que los elementos se estiren */
+    width: 100%; /* Asegúrate de que los cards no se estiren más de lo debido */
+  }
