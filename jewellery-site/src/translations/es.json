@@ -20,7 +20,14 @@
     "catalogue":{
         "title": "Nuestra Colección",
         "paragraph": "En Melo Joyería, encontrarás una amplia selección de joyas hechas a mano, diseñadas para realzar tu estilo y personalidad. Nuestra colección incluye:",
-        "categories": ["Anillos", "Collares y dijes", "Pulseras", "Aretes"]
+        "paragraph_cta":"Cada pieza es única y está hecha con amor y dedicación. Explora nuestra colección y encuentra la joya perfecta para ti.",
+        "categories": ["Anillos", "Collares y dijes", "Pulseras", "Aretes"],
+        "descriptions": {
+            "ring": "Diseños elegantes y modernos, perfectos para cualquier ocasión.",
+            "necklaces_charms": "Piezas sofisticadas que combinan con todo tipo de atuendos.",
+            "wristbands": "Modelos únicos que reflejan delicadeza y buen gusto.",
+            "hoops": "Desde opciones minimalistas hasta estilos más llamativos y detallados."
+        }
     },
     "about":{
         "logo": "/iconLogo/logo_gold_completo.svg", 

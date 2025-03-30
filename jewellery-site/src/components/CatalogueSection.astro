@@ -6,17 +6,21 @@ import Mansonry from "./Mansonry.astro";
 
 const { lang } = Astro.params;
 const translations = loadTranslations(lang);
+
+const categories = translations.catalogue?.categories || [];
+const descriptions = translations.catalogue?.descriptions || {};
 ---
 
 <section class="catalogue-container">
     <div>
-        <h1>{translations.catalogue.title}</h1>
+        <h2>{translations.catalogue.title}</h2>
+        <p>{translations.catalogue.paragraph}</p>
+    </div>
+    <div class="view-category">
+        <CategoriesGallery categories={categories} descriptions={descriptions} />
     </div>
     <div class="mansory-container">
         <Mansonry />
-    </div>
-    <div class="view-category">
-        <CategoriesGallery />
     </div>
 </section>
 
@@ -28,11 +32,18 @@ const translations = loadTranslations(lang);
         background: linear-gradient(180deg, #F7E7CE 0%, #C3A776 100%);
     }
 
-    h1{
+    h2{
         margin: 0;
         text-align: center;
-        font-family: var(--font-secondary);
         font-weight: 400;
+        color: var(--black);
+    }
+
+    p{
+        text-align: center;
+        padding: 20px 10px;
+        font-size: clamp(1.125rem, 1.1075rem + 0.0877vw, 1.25rem);
+        font-weight: 300;
         color: var(--black);
     }
 
