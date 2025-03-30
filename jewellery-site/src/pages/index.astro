@@ -6,6 +6,8 @@ import Navbar from '../components/Navbar.astro';
 import CatalogueSection from '../components/CatalogueSection.astro';
 import About from '../components/About.astro';
 import ReferencesSection from '../components/ReferencesSection.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
 
 const translations = await loadTranslations(defaultLang);
 
@@ -20,5 +22,9 @@ const translations = await loadTranslations(defaultLang);
 		<CatalogueSection />
 		<About />
 		<ReferencesSection />
+		<Contact />
 	</main>
+	<footer>
+		<Footer />
+	</footer>
 </Layout>

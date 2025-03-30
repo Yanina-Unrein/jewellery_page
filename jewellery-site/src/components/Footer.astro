@@ -1,0 +1,151 @@
+---
+import { loadTranslations } from "../i18n/ui";
+import GalleryFooter from "./GalleryFooter.astro";
+
+const { lang } = Astro.params;
+const translations = loadTranslations(lang);
+---
+
+<section>
+    <div class="footer-container">
+        <div class="logo-footer-container">
+            <a class="logo-navigate" href="">
+                <img class="logo-footer" src={translations.footer.logo} alt={translations.footer.alt_logo}>
+            </a>
+            <span>{translations.footer.paragraph}</span>
+            <a class="social" href="">
+                <img class="social-icon" src={translations.footer.socials[0].icon} alt={translations.footer.socials.alt} />
+            </a>
+        </div>
+        <div>
+            <GalleryFooter />
+        </div>
+        <div>
+            <nav>
+                <ul>
+                    <li><a href="">{translations.footer.navbar[0].home}</a></li>
+                    <li><a href="">{translations.footer.navbar[1].gallery}</a></li>
+                    <li><a href="">{translations.footer.navbar[2].about}</a></li>
+                    <li><a href="">{translations.footer.navbar[3].contact}</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <span>{translations.footer.copyright}</span>
+    </div>
+</section>
+
+<style>
+    section{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding:60px 10px 20px;
+        background: var(--linen);
+    }
+    
+    .footer-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .logo-footer-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .logo-navigate{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .logo-footer{
+        width: 100%;
+        max-width: 200px;
+        height: auto;
+    }
+
+    nav ul{ 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        list-style: none;
+    }
+
+    nav ul li a{
+        font-size: clamp(1.125rem, 1.1075rem + 0.0877vw, 1.25rem);
+        font-weight: 300;
+        text-decoration: none;
+        color: var(--coffee-brown);
+        position: relative;
+        display: inline-block;
+        padding-bottom: 5px; 
+    }
+
+    nav ul li a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 1px; /* Grosor del subrayado */
+        background-color: var(--coffee-brown);
+        transition: width 0.3s ease-in-out;
+    }
+
+    nav ul li a:hover::after {
+        width: 100%;
+    }
+
+
+    p{
+        font-size: clamp(1.125rem, 1.1075rem + 0.0877vw, 1.25rem);
+        color: var(--black);
+        font-weight: 300;
+    }
+
+    .footer-copyright{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    span{
+        font-size: clamp(1rem, 0.9825rem + 0.0877vw, 1.125rem);
+        color: var(--black);
+        font-weight: 300;
+        text-align: center;
+    }
+
+
+    @media (min-width: 668px) {
+        .footer-container{
+            flex-direction: row;
+        }
+    }
+
+
+    @media (min-width: 768px) {
+        .footer-container{
+            justify-content: space-between;
+            padding: 10px 40px;
+        }
+
+        nav ul {
+            align-items: flex-start;
+        }
+    }
+
+</style>

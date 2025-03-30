@@ -1,32 +1,37 @@
 ---
 interface Props {
   text: string;
-  color: string; // Color opcional
+  color: string; 
+  class?: string;
 }
 
-const { text, color = "var(--golden-sand)" } = Astro.props;
+const { text, color = "var(--golden-sand)", class: customClass } = Astro.props;
 ---
 
-<style>
-.btn {
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  color: var(--black);
-  transition: background 0.3s ease;
-}
-
-.btn:hover {
-  opacity: 0.8;
-}
-</style>
-
-<button class="btn" style={`background: ${color};`}>
+<a href="" class={`btn ${customClass || ""}`} style={`background: ${color};`}>
   {text}
-</button>
+</a>
+
+<style>
+  .btn {
+    text-decoration: none;
+    width: auto;
+    display: inline-block;
+    padding: 20px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    color: var(--black);
+    transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .btn:hover{
+    transform: translateY(-4px);
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  }
+  </style>
 
 
 

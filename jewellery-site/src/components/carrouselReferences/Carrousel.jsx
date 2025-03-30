@@ -1,67 +1,94 @@
-import React, { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-
-import { EffectCoverflow, Pagination, Navigation } from 'swiper';
+import { useState, useEffect, useRef } from "react";
 import CardReference from "../cardReference/CardRefence";
 import { images } from "../../data/images"; 
 import "./carrousel.css";
 
 const Carousel = ({ translations }) => {
-    const [activeIndex, setActiveIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [slidesPerView, setSlidesPerView] = useState(1);
+  const sliderRef = useRef(null);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
-    const handleSlideChange = (swiper) => {
-      setActiveIndex(swiper.activeIndex);
+  useEffect(() => {
+    const updateSlidesPerView = () => {
+      if (window.innerWidth >= 1024) {
+        setSlidesPerView(3);
+      } else if (window.innerWidth >= 640) {
+        setSlidesPerView(2);
+      } else {
+        setSlidesPerView(1);
+      }
+      setCurrentIndex(0);
     };
-  
-    return (
-      <div className="cards-container">
-        <Swiper
-          effect={'coverflow'}
-          grabCursor={true}
-          centeredSlides={true}
-          loop={true}
-          slidesPerView={'auto'}
-          coverflowEffect={{
-            rotate: 0,
-            stretch: 0,
-            depth: 100,
-            modifier: 2.5,
-          }}
-          pagination={{ el: '.swiper-pagination', clickable: true }}
-          navigation={{
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-            clickable: true,
-          }}
-          modules={[EffectCoverflow, Pagination, Navigation]}
-          className="swiper_container"
-          onSlideChange={handleSlideChange}
-        >
-          {images.length > 0 ? (
-            images.map((image, index) => (
-              <SwiperSlide key={index}>
-                <CardReference altimg={`Testimonio ${index + 1}`} image={image} />
-              </SwiperSlide>
-            ))
-          ) : (
-            <p>No images available</p>
-          )}
-          <div className="slider-controler">
-            <div className="swiper-button-prev slider-arrow">
-              <ion-icon name="arrow-back-outline"></ion-icon>
-            </div>
-            <div className="swiper-button-next slider-arrow">
-              <ion-icon name="arrow-forward-outline"></ion-icon>
-            </div>
-            <div className="swiper-pagination"></div>
-          </div>
-        </Swiper>
-      </div>
-    );
+
+    updateSlidesPerView();
+    window.addEventListener("resize", updateSlidesPerView);
+    return () => window.removeEventListener("resize", updateSlidesPerView);
+  }, []);
+
+  const goToSlide = (index) => {
+    const maxIndex = Math.max(0, images.length - slidesPerView); // Calcula el índice máximo
+    if (index >= 0 && index <= maxIndex) {
+      setCurrentIndex(index);
+    }
   };
-  
-  export default Carousel;
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const deltaX = touchStartX.current - touchEndX.current;
+    if (deltaX > 50) {
+      goToSlide(currentIndex + 1);
+    } else if (deltaX < -50) {
+      goToSlide(currentIndex - 1);
+    }
+  };
+
+  return (
+    <div className="cards-container">
+      <div
+        className="slider-container"
+        ref={sliderRef}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <div
+          className="slider"
+          style={{ transform: `translateX(-${currentIndex * (100 / slidesPerView)}%)` }}
+        >
+          {images.map((image, index) => (
+            <div 
+              key={index} 
+              className="slide" 
+              style={{ width: `${100 / slidesPerView}%` }} // Ancho dinámico sin flex
+            >
+              <CardReference altimg={`Testimonio ${index + 1}`} image={image} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Bullets */}
+      <ul className="home-carousel-bullets">
+        {[...Array(images.length - slidesPerView + 1)].map((_, index) => (
+          <li
+            key={index}
+            className={index === currentIndex ? "activeSlide" : ""}
+            onClick={() => goToSlide(index)}
+          ></li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Carousel;
+

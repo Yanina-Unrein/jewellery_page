@@ -14,14 +14,75 @@
   "hero":{
       "logo": "/iconLogo/logo_black_completo.svg",
       "alt": "Melo Jewelry Logo",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sollicitudin nisl neque, ut aliquam mauris aliquam nec.",
+      "content": "Melo Jewellery is a Salvadoran handmade jewellery company. We design unique pieces that stand out for their originality and attention to detail. Each creation reflects elegance, authenticity and the art of personal expression.",
       "btn_cta": "Discover more on our Instagram"
   },
-  "catalogue":{
-    "title": "Conoce algunas de nuestras piezas únicas hechas a mano"
+  "about": {
+    "logo": "/iconLogo/logo_gold_completo.svg", 
+    "alt-logo": "Melo Jewelry Logo",
+    "alt-img": "",
+    "title": "About Us",
+    "paragraphs": [
+        "Melo Jewelry is a Salvadoran venture born from a passion for art and personal expression through jewelry. We believe that each person has a unique style, and our mission is to create pieces that reflect that individuality.",
+        "We specialize in the design and manufacture of handcrafted jewelry, using high-quality materials to ensure the durability and beauty of each piece. We stand out by offering creations that go beyond the conventional, with designs that are unique and break away from the ordinary in the market.",
+        "For us, every accessory is more than just a piece of jewelry: it is a work of art made with love, precision, and attention to detail. We want every customer to find in our creations the perfect complement that expresses their essence and personality."
+    ],
+    "btn_cta": "Discover more on our Instagram"
+},
+  "catalogue": {
+    "title": "Discover some of our unique handmade pieces"
   },
-  "references":{
-    "title":"Experiencias que Brillan"
-  } 
-  
+  "references": {
+      "title": "Shining Experiences"
+  },
+ "contact": {
+    "title": "Customization & Orders",
+    "paragraph": "Each piece can be customized to suit your taste and preference. If you have a special idea, our team will be happy to bring it to life.",
+    "contact-info": [
+        {
+            "icon": "/icons/phone.svg",
+            "alt": "phone icon",
+            "content": "Contact us via DM or WhatsApp at (503) 79880722."
+        },
+        {
+            "icon": "/icons/truck.svg",
+            "alt": "truck icon",
+            "content": "Shipping: National and international delivery to bring our creations to you."
+        },
+        {
+            "icon": "/icons/map-pin.svg",
+            "alt": "location icon",
+            "content": "EL SALVADOR, C.A."
+        }
+    ],
+    "paragraph_cta": "Discover the magic of handcrafted jewelry and find your next favorite piece at Melo Jewelry!",
+    "btn": "Discover more on our Instagram"
+  },
+    "footer": {
+      "logo": "/iconLogo/logo_black_completo.svg",
+      "alt_logo": "Melo Jewelry Logo",
+      "paragraph": "Jewelry that tells stories.",
+      "socials": [
+          {
+              "icon": "/icons/instagram.svg",
+              "alt": "Instagram icon",
+              "link": ""
+          }
+      ],
+      "navbar": [
+          {
+              "home": "Home"
+          },
+          {
+              "gallery": "Catalog"
+          },
+          {
+              "about": "About Melo"
+          },
+          {
+              "contact": "Contact"
+          }
+    ],
+    "copyright": "Developed by Yanina Unrein | © 2024 Melo Jewelry. All rights reserved."
+  }
 }

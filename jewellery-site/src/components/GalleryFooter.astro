@@ -1,0 +1,30 @@
+---
+const images = ["image-1.svg", "image-2.svg", "image-3.svg", "image-4.svg"];
+---
+
+<div class="gallery">
+  {images.map((image, index) => (
+    <img 
+      key={index} 
+      src={`/galleryFooter/${image}`} 
+      alt={`Icono ${index + 1}`} 
+      class="gallery-img"
+    />
+  ))}
+</div>
+
+<style>
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 100px);
+    grid-template-rows: repeat(2, 100px);
+    gap: 10px;
+    justify-content: center;
+}
+
+.gallery-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+</style>

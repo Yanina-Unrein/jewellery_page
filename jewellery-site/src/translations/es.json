@@ -14,26 +14,78 @@
    "hero": {
         "logo": "/iconLogo/logo_black_completo.svg",
         "alt": "Logo Joyeria Melo",
-        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sollicitudin nisl neque, ut aliquam mauris aliquam nec.",  
-        "btn_cta": "Descubre más en nuestro Instagram"
+        "content": "Melo Joyería es un emprendimiento salvadoreño de joyería artesanal. Diseñamos piezas únicas que destacan por su originalidad y atención al detalle. Cada creación refleja elegancia, autenticidad y el arte de la expresión personal",
+        "btn_cta":"Descubre más en nuestro Instagram"
     },
     "catalogue":{
-        "title": "Conoce algunas de nuestras piezas únicas hechas a mano",
-        "categories": ["Anillos", "Pulseras", "Collares", "Sets", "Llamadores de ángeles"]
+        "title": "Nuestra Colección",
+        "paragraph": "En Melo Joyería, encontrarás una amplia selección de joyas hechas a mano, diseñadas para realzar tu estilo y personalidad. Nuestra colección incluye:",
+        "categories": ["Anillos", "Collares y dijes", "Pulseras", "Aretes"]
     },
     "about":{
         "logo": "/iconLogo/logo_gold_completo.svg", 
         "alt-logo": "Logo Melo joyeria",
         "alt-img": "",
-        "title":"Cada Joya Cuenta una Historia",
+        "title":"Sobre Nosotros",
         "paragraphs":
         [
-            "Desde hace generaciones, en nuestra joyería creamos piezas únicas que celebran la belleza y el arte. Cada joya es diseñada con pasión y precisión, fusionando materiales nobles con un diseño atemporal. Más que accesorios, nuestras creaciones son recuerdos que trascienden el tiempo.",
-            "Desde hace generaciones, en nuestra joyería creamos piezas únicas que celebran la belleza y el arte. Cada joya es diseñada con pasión y precisión, fusionando materiales nobles con un diseño atemporal. Más que accesorios, nuestras creaciones son recuerdos que trascienden el tiempo."
+            "Melo Joyería es un emprendimiento salvadoreño que nace de la pasión por el arte y la expresión personal a través de la joyería. Creemos que cada persona tiene un estilo único, y nuestra misión es crear piezas que reflejen esa individualidad.",
+            "Nos especializamos en el diseño y fabricación de joyería artesanal, utilizando materiales de alta calidad para garantizar la durabilidad y belleza de cada pieza. Nos diferenciamos por ofrecer creaciones que van más allá de lo convencional, con diseños que destacan y rompen con lo común en el mercado.",
+            "Para nosotros, cada accesorio es más que una joya: es una obra de arte hecha con amor, precisión y atención al detalle. Queremos que cada cliente encuentre en nuestras creaciones un complemento perfecto que exprese su esencia y personalidad."
         ],
         "btn_cta":"Descubre más en nuestro Instagram"
     },
     "references":{
         "title":"Experiencias que Brillan"
+    },
+    "contact":{
+        "title":"Personalización y Pedidos",
+        "paragraph":"Cada pieza puede ser personalizada según tu gusto y preferencia. Si tienes una idea especial, nuestro equipo estará encantado de convertirla en realidad.",
+        "contact-info":[
+            {
+                "icon": "/icons/phone.svg",
+                "alt": "icono teléfono",
+                "content": "Contáctanos por DM o vía WhatsApp al (503) 79880722."
+            },
+            {
+                "icon": "/icons/truck.svg",
+                "alt": "icono camión",
+                "content": "Envíos: Nacionales e internacionales para que nuestras creaciones lleguen hasta ti."
+            },
+            {
+                "icon": "/icons/map-pin.svg",
+                "alt": "icono ubicación",
+                "content": "EL SALVADOR, C.A."
+            }
+        ],
+        "paragraph_cta":"¡Descubre la magia de la joyería artesanal y encuentra tu próxima pieza favorita en Melo Joyería!",
+        "btn":"Descubre más en nuestro Instagram"
+    },
+    "footer":{
+        "logo": "/iconLogo/logo_black_completo.svg",
+        "alt_logo": "Logo Melo joyeria",
+        "paragraph":"Joyas que cuentan historias.",
+        "socials":[
+            {
+                "icon": "/icons/instagram.svg",
+                "alt": "icono instagram",
+                "link": ""
+            }
+        ],
+        "navbar":[
+            {
+                "home": "Inicio"
+            },
+            {
+                "gallery": "Cátalogo"
+            },
+            {
+                "about": "Sobre Melo"
+            },
+            {
+                "contact": "Contacto"
+            }
+        ],
+        "copyright": "Desarrollado por Yanina Unrein | © 2024 Melo Jewelry. Todos los derechos reservados."
     }
 }

@@ -1,16 +1,71 @@
+.cards-container {
+  width: 100%;
+  max-width: 950px;
+  overflow: hidden;
+}
 
-.mySwiper {
-    width: 100%;  /* Asegúrate de que el Swiper ocupe todo el ancho disponible */
-    height: auto; /* Asegura que la altura también sea dinámica */
+.slider-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease-in-out;
+  touch-action: pan-y;
+  gap: 0; 
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  flex-shrink: 0; 
+  padding: 10px; 
+}
+
+
+.home-carousel-bullets {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 0;
+}
+
+.home-carousel-bullets li {
+  --size: 12px;
+  list-style: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--linen);
+  cursor: pointer;
+}
+
+.home-carousel-bullets .activeSlide {
+  background-color: var(--coffee-brown);
+}
+
+/* Móvil: solo 1 card */
+@media (max-width: 640px) {
+  .slide {
+    width: 100%;  /* Ocupa el 100% del contenedor */
   }
-  
-  .swiper-slide {
-    display: flex;
-    justify-content: center;  /* Centra las imágenes dentro del slide */
-    align-items: center;
+}
+
+/* Tablet: 2 cards */
+@media (min-width: 0px) and (max-width: 1023px) {
+  .slide {
+    width: 50%;  /* 2 cards en pantallas medianas */
   }
-  
-  .card {
-    flex: 0 0 auto; /* Evita que los elementos se estiren */
-    width: 100%; /* Asegúrate de que los cards no se estiren más de lo debido */
+}
+
+/* Desktop: 3 cards */
+@media (min-width: 1024px) {
+  .slide {
+    width: 33.33%;  /* 3 cards en pantallas grandes */
   }
+}

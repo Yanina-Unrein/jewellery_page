@@ -1,0 +1,131 @@
+---
+import { loadTranslations } from "../i18n/ui";
+import BtnLayout from "./BtnLayout.astro";
+import ContactInfo from "./ContactInfo.astro";
+
+
+const { lang } = Astro.params;
+const translations = loadTranslations(lang);
+const contactInfo = translations.contact["contact-info"];
+
+---
+
+<section>
+        <div class="title-contact">
+            <h2>{translations.contact.title}</h2>
+            <span>{translations.contact.paragraph}</span>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info-container">
+                {contactInfo.map((info, index) => (
+                    <ContactInfo 
+                        key={index}
+                        icon={info.icon}
+                        alt={info.alt}
+                        content={info.content}
+                    />
+                ))}
+                <BtnLayout class="contact-btn"  text={translations.contact.btn} color="var(--linen)" />
+            </div>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.27989115254!2d-89.72101228535188!3d13.794185665148034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6330171e456a75%3A0xf13fa4c0b9a4965d!2sEl%20Salvador!5e0!3m2!1ses!2ssv!4v1710381229276!5m2!1ses!2ssv" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+</section>
+
+<style>
+  section {
+    position: relative;
+    background-image: url("/img/background_contact.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 10px;
+    margin: 0;
+    z-index: 1;
+}
+
+section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(247, 231, 206, 0.7) 0%, rgba(195, 167, 118, 0.7) 100%);
+    z-index: -1;
+}
+
+.title-contact {
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column; 
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 10px;
+}
+
+.contact-info-container,
+.map-container {
+    width: 100%; 
+    max-width: 100%;
+}
+
+.contact-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-container iframe {
+    width: clamp(300px, 80vw, 552px); 
+    height: clamp(188px, 50vh, 374px);
+    border-radius: 20px;
+    border: none;
+}
+
+:global(.contact-btn) {
+    max-width: 260px;
+    margin-top: 30px;
+}
+
+@media (min-width: 768px) {
+    .contact-container {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .contact-info-container,
+    .map-container {
+        max-width: 48%; 
+    }
+}
+
+
+@media (width > 1439px) {
+    .contact-container {
+        padding: 20px 80px;
+    }
+}
+</style>
+
+
+
