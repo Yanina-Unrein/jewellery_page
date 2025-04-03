@@ -1,4 +1,9 @@
 {
+    "seo": {
+        "title": "Melo Joyería - Joyas Artesanales",
+        "description": "Descubre Melo Joyería, joyería artesanal salvadoreña con piezas únicas en oro laminado, acero inoxidable, perlas y piedras naturales. Encuentra tu estilo",
+        "keywords": "Melo Joyería, joyería artesanal salvadoreña, joyería, artesanal, joyas únicas, estilo personal, accesorios"
+    },
     "navbar": {
         "home": "Inicio",
         "about": "Sobre Melo",
@@ -15,7 +20,9 @@
         "logo": "/iconLogo/logo_black_completo.svg",
         "alt": "Logo Joyeria Melo",
         "content": "Melo Joyería es un emprendimiento salvadoreño de joyería artesanal. Diseñamos piezas únicas que destacan por su originalidad y atención al detalle. Cada creación refleja elegancia, autenticidad y el arte de la expresión personal",
-        "btn_cta":"Descubre más en nuestro Instagram"
+        "btn_cta":"Descubre más en nuestro Instagram",
+        "img": "/img/hero-jewellery.webp",
+        "alt_img": "Caja abierta que contiene joyas de oro y perlas, destacando su brillo y elegancia en un fondo neutro."
     },
     "catalogue":{
         "title": "Nuestra Colección",
@@ -31,8 +38,8 @@
     },
     "about":{
         "logo": "/iconLogo/logo_gold_completo.svg", 
-        "alt-logo": "Logo Melo joyeria",
-        "alt-img": "",
+        "alt_logo": "Logo Melo joyeria",
+        "alt_img": "Un par de pendientes bañados en oro junto a unos alicates y una flor, que muestran una escena de fabricación de joyas.",
         "title":"Sobre Nosotros",
         "paragraphs":
         [

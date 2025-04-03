@@ -8,21 +8,20 @@ const translations = loadTranslations(lang);
 ---
 
 <section>
-    <div class="about-container">
+    <div class="about-container" id="about">
       <div>
         <picture class="logo-container">
-            <img src={translations.about.logo} alt={translations.about.alt}>
+            <img src={translations.about.logo} alt={translations.about.alt_logo} loading="lazy" >
         </picture>
       </div>
         <div class="content-about-container">
             <div class="logo-section">
                 <picture class="melo-img-container">
-                    <img src="/mansonry/image-11.svg" alt="">
+                    <img src="/img/about.svg" alt={translations.about.alt_img} loading="lazy" >
                 </picture>
             </div>
             <div class="content-about">
                 <h2>{translations.about.title}</h2>
-               {/* Iterar sobre los párrafos */}
                 {translations.about.paragraphs.map((paragraph, index) => (
                     <p key={index}>{paragraph}</p>
                 ))}

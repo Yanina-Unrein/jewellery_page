@@ -2,7 +2,7 @@
 const { icon, alt, content } = Astro.props;
 ---
 <div class="contact-info">
-  <img src={icon} alt={alt} class="contact-icon" />
+  <img src={icon} alt={alt} class="contact-icon" loading="lazy"  />
   <p>{content}</p>
 </div>
 

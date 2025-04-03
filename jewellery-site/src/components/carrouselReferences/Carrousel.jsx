@@ -28,7 +28,7 @@ const Carousel = ({ translations }) => {
   }, []);
 
   const goToSlide = (index) => {
-    const maxIndex = Math.max(0, images.length - slidesPerView); // Calcula el índice máximo
+    const maxIndex = Math.max(0, images.length - slidesPerView); 
     if (index >= 0 && index <= maxIndex) {
       setCurrentIndex(index);
     }
@@ -68,7 +68,7 @@ const Carousel = ({ translations }) => {
             <div 
               key={index} 
               className="slide" 
-              style={{ width: `${100 / slidesPerView}%` }} // Ancho dinámico sin flex
+              style={{ width: `${100 / slidesPerView}%` }} 
             >
               <CardReference altimg={`Testimonio ${index + 1}`} image={image} />
             </div>
@@ -76,7 +76,6 @@ const Carousel = ({ translations }) => {
         </div>
       </div>
 
-      {/* Bullets */}
       <ul className="home-carousel-bullets">
         {[...Array(images.length - slidesPerView + 1)].map((_, index) => (
           <li

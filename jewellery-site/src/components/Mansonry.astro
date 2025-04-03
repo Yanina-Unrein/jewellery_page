@@ -26,6 +26,111 @@ const images = Array.from({ length: 13 }, (_, i) => `/mansonry/image-${i + 1}.sv
   <img id="lightbox-img" src="" alt="" />
 </div>
 
+<script>
+  function initGallery() {
+    const gallery = document.querySelector('.masonry-gallery');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+    const closeButton = document.querySelector('.lightbox-close');
+    let currentTouchY = 0;
+    let initialTouchY = 0;
+
+    // Open lightbox with animation
+    gallery?.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'IMG') {
+        const src = target.getAttribute('src');
+        const alt = target.getAttribute('alt');
+        if (lightbox && lightboxImg && src) {
+          lightboxImg.src = src;
+          lightboxImg.alt = alt || '';
+          
+          // Add active class after a small delay to trigger animation
+          requestAnimationFrame(() => {
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          });
+        }
+      }
+    });
+
+    // Close lightbox with animation
+    const closeLightbox = () => {
+      if (lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Clear image source after animation
+        setTimeout(() => {
+          if (lightboxImg) lightboxImg.src = '';
+        }, 300);
+      }
+    };
+
+    closeButton?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeLightbox();
+    });
+
+    lightbox?.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    // Mobile swipe to close
+    lightbox?.addEventListener('touchstart', (e) => {
+      initialTouchY = e.touches[0].clientY;
+      currentTouchY = initialTouchY;
+    }, { passive: true });
+
+    lightbox?.addEventListener('touchmove', (e) => {
+      currentTouchY = e.touches[0].clientY;
+      const deltaY = currentTouchY - initialTouchY;
+      
+      if (deltaY > 0) {
+        const opacity = Math.max(0, 1 - (deltaY / window.innerHeight));
+        if (lightbox) {
+          lightbox.style.opacity = opacity.toString();
+        }
+      }
+    }, { passive: true });
+
+    lightbox?.addEventListener('touchend', () => {
+      const deltaY = currentTouchY - initialTouchY;
+      
+      if (deltaY > 100) {
+        closeLightbox();
+      } else {
+        if (lightbox) {
+          lightbox.style.opacity = '';
+        }
+      }
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+
+    // Preload adjacent images
+    const preloadAdjacentImages = (currentIndex: number) => {
+      const imagesToPreload = [currentIndex - 1, currentIndex + 1]
+        .filter(index => index >= 0 && index < Image.length);
+
+      imagesToPreload.forEach(index => {
+        const img = new Image();
+        img.src = images[index];
+      });
+    };
+  }
+
+  // Initialize gallery when the page loads
+  document.addEventListener('DOMContentLoaded', initGallery);
+</script>
+
 <style>
   .container {
     display: flex;
@@ -263,108 +368,3 @@ const images = Array.from({ length: 13 }, (_, i) => `/mansonry/image-${i + 1}.sv
     }
   }
 </style>
-
-<script>
-  function initGallery() {
-    const gallery = document.querySelector('.masonry-gallery');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
-    const closeButton = document.querySelector('.lightbox-close');
-    let currentTouchY = 0;
-    let initialTouchY = 0;
-
-    // Open lightbox with animation
-    gallery?.addEventListener('click', (e) => {
-      const target = e.target as HTMLElement;
-      if (target.tagName === 'IMG') {
-        const src = target.getAttribute('src');
-        const alt = target.getAttribute('alt');
-        if (lightbox && lightboxImg && src) {
-          lightboxImg.src = src;
-          lightboxImg.alt = alt || '';
-          
-          // Add active class after a small delay to trigger animation
-          requestAnimationFrame(() => {
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-          });
-        }
-      }
-    });
-
-    // Close lightbox with animation
-    const closeLightbox = () => {
-      if (lightbox) {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-        
-        // Clear image source after animation
-        setTimeout(() => {
-          if (lightboxImg) lightboxImg.src = '';
-        }, 300);
-      }
-    };
-
-    closeButton?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      closeLightbox();
-    });
-
-    lightbox?.addEventListener('click', (e) => {
-      if (e.target === lightbox) {
-        closeLightbox();
-      }
-    });
-
-    // Mobile swipe to close
-    lightbox?.addEventListener('touchstart', (e) => {
-      initialTouchY = e.touches[0].clientY;
-      currentTouchY = initialTouchY;
-    }, { passive: true });
-
-    lightbox?.addEventListener('touchmove', (e) => {
-      currentTouchY = e.touches[0].clientY;
-      const deltaY = currentTouchY - initialTouchY;
-      
-      if (deltaY > 0) {
-        const opacity = Math.max(0, 1 - (deltaY / window.innerHeight));
-        if (lightbox) {
-          lightbox.style.opacity = opacity.toString();
-        }
-      }
-    }, { passive: true });
-
-    lightbox?.addEventListener('touchend', () => {
-      const deltaY = currentTouchY - initialTouchY;
-      
-      if (deltaY > 100) {
-        closeLightbox();
-      } else {
-        if (lightbox) {
-          lightbox.style.opacity = '';
-        }
-      }
-    });
-
-    // Close on escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeLightbox();
-      }
-    });
-
-    // Preload adjacent images
-    const preloadAdjacentImages = (currentIndex: number) => {
-      const imagesToPreload = [currentIndex - 1, currentIndex + 1]
-        .filter(index => index >= 0 && index < Image.length);
-
-      imagesToPreload.forEach(index => {
-        const img = new Image();
-        img.src = images[index];
-      });
-    };
-  }
-
-  // Initialize gallery when the page loads
-  document.addEventListener('DOMContentLoaded', initGallery);
-</script>

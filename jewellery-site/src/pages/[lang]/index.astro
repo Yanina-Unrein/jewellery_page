@@ -6,14 +6,14 @@ import Navbar from '../../components/Navbar.astro';
 import CatalogueSection from '../../components/CatalogueSection.astro';
 import About from '../../components/About.astro';
 import ReferencesSection from '../../components/ReferencesSection.astro';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
 
 
 const { lang } = Astro.params;
-const currentLang = lang && ["en", "es"].includes(lang) ? lang : 'es'; 
+const currentLang = lang && ["en", "es"].includes(lang) ? lang : 'es';
 
-
-const translations = await loadTranslations(currentLang);
-
+const translations = loadTranslations(currentLang);
 
 export async function getStaticPaths() {
   return [
@@ -23,7 +23,7 @@ export async function getStaticPaths() {
 }
 ---
 
-<Layout lang={currentLang}>
+<Layout lang={currentLang} translations={translations}>
 	<header>
 		<Navbar />
 	</header>
@@ -32,5 +32,9 @@ export async function getStaticPaths() {
 		<CatalogueSection />
 		<About />
 		<ReferencesSection />
+		<Contact />
 	</main>
+	<footer>
+		<Footer />
+	</footer>
 </Layout>

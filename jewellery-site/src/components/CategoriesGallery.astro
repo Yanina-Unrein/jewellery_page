@@ -1,125 +1,137 @@
 ---
-const { categories, descriptions } = Astro.props;
+import { categoryImages } from "../data/catalogue.js";
+
+const { translations } = Astro.props;
+const categories = translations.catalogue.categories;
+const descriptions = translations.catalogue.descriptions;
+
+const categoryKeyMap = {
+  'anillos': { imageKey: 'anillos', descKey: 'ring' },
+  'collares y dijes': { imageKey: 'collares y dijes', descKey: 'necklaces_charms' },
+  'pulseras': { imageKey: 'pulseras', descKey: 'wristbands' },
+  'aretes': { imageKey: 'aretes', descKey: 'hoops' },
+  'rings': { imageKey: 'rings', descKey: 'ring' },
+  'necklaces and charms': { imageKey: 'necklaces and charms', descKey: 'necklaces_charms' },
+  'bracelets': { imageKey: 'bracelets', descKey: 'wristbands' },
+  'earrings': { imageKey: 'earrings', descKey: 'hoops' }
+};
+
+const getDefaultCategory = (categories) => {
+  const spanishCategories = ['anillos', 'collares y dijes', 'pulseras', 'aretes'];
+  return categories.find(cat => spanishCategories.includes(cat.toLowerCase())) || categories[0];
+};
+
+const defaultCategory = getDefaultCategory(categories).toLowerCase();
+const initialData = categoryKeyMap[defaultCategory] || { imageKey: defaultCategory, descKey: '' };
+const initialImages = categoryImages[initialData.imageKey] || [];
+const initialDescription = descriptions[initialData.descKey] || '';
 ---
 
 <div class="jewelry-categories">
   <div class="categories-container">
     <div class="mobile-categories">
       <div class="carousel">
-        {categories && categories.length > 0 ? (
-          categories.map((category) => (
-            <button class="category-button" data-category={category}>
+        {categories.map((category, index) => {
+          const categoryKey = category.toLowerCase();
+          const mappedData = categoryKeyMap[categoryKey] || { imageKey: categoryKey, descKey: '' };
+          const isActive = categoryKey === defaultCategory;
+          return (
+            <button
+              class={`category-button ${isActive ? 'active' : ''}`}
+              data-category={categoryKey}
+              data-imagekey={mappedData.imageKey}
+              data-description={descriptions[mappedData.descKey] || ''}
+            >
               {category}
             </button>
-          ))
-        ) : (
-          <p>No categories available.</p>
-        )}
+          );
+        })}
       </div>
     </div>
     <div class="desktop-categories">
-      {categories && categories.length > 0 ? (
-        categories.map((category) => (
-          <button class="category-button" data-category={category}>
+      {categories.map((category, index) => {
+        const categoryKey = category.toLowerCase();
+        const mappedData = categoryKeyMap[categoryKey] || { imageKey: categoryKey, descKey: '' };
+        const isActive = categoryKey === defaultCategory;
+        return (
+          <button
+            class={`category-button ${isActive ? 'active' : ''}`}
+            data-category={categoryKey}
+            data-imagekey={mappedData.imageKey}
+            data-description={descriptions[mappedData.descKey] || ''}
+          >
             {category}
           </button>
-        ))
-      ) : (
-        <p>No categories available.</p>
-      )}
+        );
+      })}
     </div>
   </div>
 
-  {categories && categories.length > 0 ? (
-    categories.map((category) => {
-      const descriptionKey = category.toLowerCase().replace(/\s+/g, "_");
-      return (
-        <div class="gallery" id={`gallery-${category}`}>
-          <p>{descriptions[descriptionKey]}</p>
-          {/* Verifica si la propiedad 'images' existe en la categoría */}
-          {category.images && category.images.length > 0 ? (
-            category.images.map((image) => (
-              <img src={image} alt={category} loading="lazy" />
-            ))
-          ) : (
-            <p>No images available.</p>
-          )}
-        </div>
-      );
-    })
-  ) : (
-    <p>No categories available.</p>
-  )}
+  <div class="gallery-container">
+    {initialDescription && (
+      <span class="category-description">{initialDescription}</span>
+    )}
+    <div class="gallery active" id="image-gallery">
+      {initialImages.map(image => (
+        <img 
+          src={`/public/${image}`} 
+          alt={defaultCategory} 
+          class="img-gallery" 
+          loading="lazy" 
+        />
+      ))}
+    </div>
+  </div>
 </div>
 
-<script>
-  type CategoryId = string | null;
-
-  const initializeCategories = (): void => {
-    const buttons = document.querySelectorAll<HTMLButtonElement>('.category-button');
-    const galleries = document.querySelectorAll<HTMLDivElement>('.gallery');
-    let activeCategory: CategoryId = null;
-
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        const categoryId = button.getAttribute('data-category');
-        const targetGallery = document.getElementById(`gallery-${categoryId}`);
-
-        if (!targetGallery) return;
-
-        if (activeCategory === categoryId) {
-          targetGallery.classList.remove('active');
-          button.classList.remove('active');
-          activeCategory = null;
-        } else {
-          galleries.forEach(gallery => gallery.classList.remove('active'));
-          buttons.forEach(btn => btn.classList.remove('active'));
-          targetGallery.classList.add('active');
-          button.classList.add('active');
-          activeCategory = categoryId;
-        }
-      });
-    });
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('.category-button');
+  const gallery = document.getElementById('image-gallery');
+  const descriptionEl = document.querySelector('.category-description');
+  
+  // Objeto de imágenes completo como string JSON
+  const allImages = {
+    'anillos': ["anillos/1.svg","anillos/2.svg","anillos/3.svg","anillos/4.svg","anillos/5.svg","anillos/6.svg"],
+    'collares y dijes': ["collares/1.svg","collares/2.svg","collares/3.svg","collares/4.svg","collares/5.svg"],
+    'pulseras': ["pulseras/1.svg","pulseras/2.svg","pulseras/3.svg","pulseras/4.svg","pulseras/5.svg","pulseras/6.svg","pulseras/7.svg"],
+    'aretes': ["aros/1.svg","aros/2.svg","aros/3.svg","aros/4.svg","aros/5.svg"],
+    'rings': ["anillos/1.svg","anillos/2.svg","anillos/3.svg","anillos/4.svg","anillos/5.svg","anillos/6.svg"],
+    'necklaces and charms': ["collares/1.svg","collares/2.svg","collares/3.svg","collares/4.svg","collares/5.svg"],
+    'bracelets': ["pulseras/1.svg","pulseras/2.svg","pulseras/3.svg","pulseras/4.svg","pulseras/5.svg","pulseras/6.svg","pulseras/7.svg"],
+    'earrings': ["aros/1.svg","aros/2.svg","aros/3.svg","aros/4.svg","aros/5.svg"]
   };
 
-  document.addEventListener('DOMContentLoaded', initializeCategories);
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const categoryKey = button.dataset.category;
+      const imageKey = button.dataset.imagekey;
+      const description = button.dataset.description;
+      
+      // Actualizar descripción
+      descriptionEl.textContent = description;
+      
+      // Actualizar galería con las imágenes correctas
+      const images = allImages[imageKey] || [];
+      gallery.innerHTML = images.map(image => `
+        <img 
+          src="/public/${image}" 
+          alt="${categoryKey}" 
+          class="img-gallery" 
+          loading="lazy"
+        />
+      `).join('');
+      
+      // Actualizar botón activo
+      buttons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+    });
+  });
+});
 </script>
 
 
-<script>
-  type CategoryId = string | null;
-
-  const initializeCategories = (): void => {
-    const buttons = document.querySelectorAll<HTMLButtonElement>('.category-button');
-    const galleries = document.querySelectorAll<HTMLDivElement>('.gallery');
-    let activeCategory: CategoryId = null;
-
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        const categoryId = button.getAttribute('data-category');
-        const targetGallery = document.getElementById(`gallery-${categoryId}`);
-
-        if (!targetGallery) return;
-
-        if (activeCategory === categoryId) {
-          targetGallery.classList.remove('active');
-          button.classList.remove('active');
-          activeCategory = null;
-        } else {
-          galleries.forEach(gallery => gallery.classList.remove('active'));
-          buttons.forEach(btn => btn.classList.remove('active'));
-          targetGallery.classList.add('active');
-          button.classList.add('active');
-          activeCategory = categoryId;
-        }
-      });
-    });
-  };
-
-  document.addEventListener('DOMContentLoaded', initializeCategories);
-</script>
-
-<style>
+<style is:global>
   .jewelry-categories {
     padding: 1rem;
     max-width: 1200px;
@@ -135,9 +147,10 @@ const { categories, descriptions } = Astro.props;
     background: none;
     color: var(--black);
     border: none;
-    padding: 1rem;
+    border-radius: 5px;
+    padding: 0.80rem;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.1rem;
     transition: all 0.3s ease;
     margin: 0.5rem;
     letter-spacing: 1px;
@@ -152,6 +165,7 @@ const { categories, descriptions } = Astro.props;
     align-items: center;
     justify-content: center;
     text-align: center;
+    font-weight: 300;
   }
 
   .category-button:hover,
@@ -162,20 +176,35 @@ const { categories, descriptions } = Astro.props;
     opacity: 1; 
   }
 
+  .gallery-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  
+  .category-description {
+    font-size: clamp(1rem, 0.9649rem + 0.1754vw, 1.25rem);
+    font-weight: 500;
+    color: var(--walnut);
+    text-align: center;
+    padding: 1.2rem 1rem;
+  }
+
   .gallery {
-    display: none;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
 
-  .gallery.active {
-    display: grid;
-    opacity: 1;
-  }
+.gallery.active {
+  opacity: 1;
+  visibility: visible;
+}
 
-  .gallery img {
+  .gallery .img-gallery {
     width: 100%;
     height: 300px;
     object-fit: cover;
@@ -184,7 +213,7 @@ const { categories, descriptions } = Astro.props;
     transition: transform 0.3s ease;
   }
 
-  .gallery img:hover {
+  .gallery .img-gallery:hover {
     transform: scale(1.05);
   }
 
@@ -221,7 +250,7 @@ const { categories, descriptions } = Astro.props;
       gap: 1rem;
     }
 
-    .gallery img {
+    .gallery .img-gallery {
       height: 200px;
     }
   }

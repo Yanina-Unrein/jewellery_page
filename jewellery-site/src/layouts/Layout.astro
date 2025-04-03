@@ -1,5 +1,7 @@
 ---
-const { lang } = Astro.props;
+const { lang = 'es', translations = {} } = Astro.props;
+const seo = translations.seo || { title: "Default Title", description: "", keywords: "" };
+const canonicalUrl = new URL(Astro.url.pathname, 'https://tudominio.com').toString();
 
 ---
 
@@ -10,10 +12,13 @@ const { lang } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={seo.description} />
+		<meta name="keywords" content={seo.keywords} />
+		<link rel="canonical" href={canonicalUrl} />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-		<title>Melo Jewelry</title>
+		<title>{seo.title}</title>
 	</head>
 	<body>
 		<slot />

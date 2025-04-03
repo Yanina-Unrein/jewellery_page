@@ -10,7 +10,7 @@ const contactInfo = translations.contact["contact-info"];
 
 ---
 
-<section>
+<section id="contact">
         <div class="title-contact">
             <h2>{translations.contact.title}</h2>
             <span>{translations.contact.paragraph}</span>
@@ -25,6 +25,7 @@ const contactInfo = translations.contact["contact-info"];
                         content={info.content}
                     />
                 ))}
+                <p>{translations.contact.paragraph_cta}</p>
                 <BtnLayout class="contact-btn"  text={translations.contact.btn} color="var(--linen)" />
             </div>
             <div class="map-container">
@@ -64,8 +65,18 @@ section::before {
 }
 
 .title-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     text-align: center;
     padding-bottom: 40px;
+}
+
+span{
+    color: var(--walnut);
+    font-weight: 500;
+    font-size: clamp(1rem, 0.9649rem + 0.1754vw, 1.25rem);
+    padding: 0 10px
 }
 
 .contact-container {
@@ -86,6 +97,12 @@ section::before {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+p{
+    color: var(--walnut);
+    font-weight: 400;
+    font-size: clamp(1rem, 0.9825rem + 0.0877vw, 1.125rem);
 }
 
 .map-container {

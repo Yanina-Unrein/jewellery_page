@@ -1,5 +1,4 @@
 ---
-import gsap from "gsap";
 import { loadTranslations } from "../i18n/ui";
 import BtnLayout from "./BtnLayout.astro";
 
@@ -9,47 +8,20 @@ const translations = loadTranslations(lang);
 
 ---
 
-<section class="hero">
+<section class="hero" id="home">
   <div class="hero-content">
-    <picture class="logo-container-hero">
-        <img class="logo-hero" src={translations.hero.logo} alt={translations.hero.alt}>
-    </picture>
+    <h1>
+        <img class="logo-hero" src={translations.hero.logo} alt={translations.hero.alt} loading="lazy" >
+    </h1>
     <p>{translations.hero.content}</p>
     <BtnLayout text={translations.hero.btn_cta} color="var(--linen)" />
   </div>
   <div class="hero-image-container">
     <picture class="hero-image">
-          <img class="img-hero" src="/img/hero-jewellery.webp" alt="">
+          <img class="img-hero" src={translations.hero.img} alt={translations.hero.alt_img} loading="lazy">
     </picture>
   </div>
 </section>
-
-<script>
-    import gsap from "gsap";
-    
-    gsap.from(".logo-container-hero", {
-      y: 50,
-      opacity: 0,
-      duration: 2,
-      ease: "power3.out",
-    });
-    
-    gsap.from("p", {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      delay: 0.5,
-      ease: "power3.out",
-    });
-
-    gsap.from("button", {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      delay: 0.8,  
-      ease: "power3.out",
-    });
-</script>
 
 <style>
   .hero {
@@ -85,15 +57,19 @@ const translations = loadTranslations(lang);
 }
 
 
-.logo-container-hero {
-  width: 200px;
+h1{
+  margin: 0;
+}
+
+.logo-hero{
+  width: 230px;
   height: auto;
 }
 
 
 .hero-image-container {
   display: none; 
-  width: 100%;
+  width: 200px;
   height: auto;
 }
 
@@ -104,8 +80,7 @@ p{
 }
 
 
-.img-hero,
-.logo-hero {
+.img-hero {
   width: 100%;
   height: auto;
   padding: 0;
@@ -124,6 +99,11 @@ p{
 
   .hero-content{
     height: 800px;
+  }
+
+  .logo-hero{
+    width: 300px;
+    height: auto;
   }
 
   p{
