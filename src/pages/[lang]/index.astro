@@ -25,16 +25,16 @@ export async function getStaticPaths() {
 
 <Layout lang={currentLang} translations={translations}>
 	<header>
-		<Navbar />
+		<Navbar client:load />
 	</header>
-	<Hero />
+	<Hero client:load />
 	<main>
-		<CatalogueSection />
-		<About />
-		<ReferencesSection />
-		<Contact />
+		<CatalogueSection client:load />
+		<About client:load />
+		<ReferencesSection client:load />
+		<Contact client:load />
 	</main>
 	<footer>
-		<Footer />
+		<Footer client:load />
 	</footer>
 </Layout>

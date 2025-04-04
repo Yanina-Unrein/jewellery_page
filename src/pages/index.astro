@@ -14,19 +14,19 @@ const translations = loadTranslations(defaultLang);
 
 <Layout lang={defaultLang} translations={translations}>
     <header>
-        <Navbar translations={translations} />
+        <Navbar client:load />
     </header>
     
-    <Hero translations={translations} />
+    <Hero client:load />
     
     <main>
-        <CatalogueSection />
-        <About />
-        <ReferencesSection />
-        <Contact />
+        <CatalogueSection client:load />
+        <About client:load />
+        <ReferencesSection client:load />
+        <Contact client:load />
     </main>
     
     <footer>
-        <Footer />
+        <Footer client:load />
     </footer>
 </Layout>

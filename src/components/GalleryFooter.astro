@@ -1,0 +1,52 @@
+---
+import { footerGallery } from "../data/footerGalelry";
+---
+
+<div class="gallery-container">
+  {footerGallery.map((imagePath, index) => (
+    <div class="gallery-item" key={index}>
+      <img 
+        src={imagePath}
+        alt={`Gallery item ${index + 1}`}
+        class="gallery-img"
+        loading="lazy"
+        onError={(e) => {
+          e.target.style.display = 'none';
+          console.error('Error loading image:', imagePath);
+        }}
+      />
+    </div>
+  ))}
+</div>
+
+<style>
+  .gallery-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  .gallery-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gallery-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    .gallery-container {
+      grid-template-columns: repeat(2, 100px);
+      gap: 20px;
+    }
+  }
+</style>

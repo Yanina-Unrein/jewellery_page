@@ -1,4 +1,6 @@
 ---
+import Spinner from "../components/Spinner.astro";
+
 const { lang = 'es', translations = {} } = Astro.props;
 const seo = translations.seo || { title: "Default Title", description: "", keywords: "" };
 const canonicalUrl = new URL(Astro.url.pathname, 'https://tudominio.com').toString();
@@ -21,7 +23,21 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://tudominio.com').toStri
 		<title>{seo.title}</title>
 	</head>
 	<body>
+		<div id="spinner-wrapper">
+			<Spinner size="200px" speed="3s" />
+		  </div>
 		<slot />
+		<script>
+			let isLoading = true;
+			
+			setTimeout(() => {
+			  isLoading = false;
+			  const spinnerWrapper = document.getElementById('spinner-wrapper');
+			  if (spinnerWrapper) {
+				spinnerWrapper.style.display = 'none'; 
+			  }
+			}, 3000);
+		  </script>
 	</body>
 </html>
 
@@ -72,8 +88,6 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://tudominio.com').toStri
 	::-webkit-scrollbar-thumb:hover {
 		background: var(--golden-sand);
 	}
-
-/* Para Firefox */
 	html {
 		scrollbar-color: var(--coffee-brown) var(--beige);
 		scrollbar-width: thin;
