@@ -2,13 +2,14 @@
 interface Props {
   text: string;
   color: string; 
+  href: string;
   class?: string;
 }
 
-const { text, color = "var(--golden-sand)", class: customClass } = Astro.props;
+const { text, color = "var(--golden-sand)", class: customClass,  href } = Astro.props;
 ---
 
-<a href="" class={`btn ${customClass || ""}`} style={`background: ${color};`}>
+<a href={href} class={`btn ${customClass || ""}`} style={`background: ${color};`} target="_blank">
   {text}
 </a>
 

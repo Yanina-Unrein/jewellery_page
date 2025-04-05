@@ -2,44 +2,121 @@
 import { loadTranslations } from "../i18n/ui";
 import BtnLayout from "./BtnLayout.astro";
 import ContactInfo from "./ContactInfo.astro";
-
+import { gsap } from 'gsap';
 
 const { lang } = Astro.params;
-const translations = loadTranslations(lang);
+const { translations } = Astro.props;
 const contactInfo = translations.contact["contact-info"];
-
 ---
 
 <section id="contact">
-        <div class="title-contact">
-            <h2>{translations.contact.title}</h2>
-            <span>{translations.contact.paragraph}</span>
+    <div class="title-contact animate-title">
+        <h2>{translations.contact.title}</h2>
+        <span>{translations.contact.paragraph}</span>
+    </div>
+    <div class="contact-container">
+        <div class="contact-info-container animate-left">
+            {contactInfo.map((info, index) => (
+                <ContactInfo 
+                    key={index}
+                    icon={info.icon}
+                    alt={info.alt}
+                    content={info.content}
+                    class="animate-item"
+                    style={`--delay: ${0.1 * index}s`}
+                />
+            ))}
+            <p class="animate-item" style="--delay: 0.4s">{translations.contact.paragraph_cta}</p>
+            <BtnLayout href="https://www.instagram.com/melojoyeria/" class="contact-btn animate-item" text={translations.contact.btn} color="var(--linen)" style="--delay: 0.5s" />
         </div>
-        <div class="contact-container">
-            <div class="contact-info-container">
-                {contactInfo.map((info, index) => (
-                    <ContactInfo 
-                        key={index}
-                        icon={info.icon}
-                        alt={info.alt}
-                        content={info.content}
-                    />
-                ))}
-                <p>{translations.contact.paragraph_cta}</p>
-                <BtnLayout class="contact-btn"  text={translations.contact.btn} color="var(--linen)" />
-            </div>
-            <div class="map-container">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.27989115254!2d-89.72101228535188!3d13.794185665148034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6330171e456a75%3A0xf13fa4c0b9a4965d!2sEl%20Salvador!5e0!3m2!1ses!2ssv!4v1710381229276!5m2!1ses!2ssv" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
+        <div class="map-container animate-right">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.27989115254!2d-89.72101228535188!3d13.794185665148034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6330171e456a75%3A0xf13fa4c0b9a4965d!2sEl%20Salvador!5e0!3m2!1ses!2ssv!4v1710381229276!5m2!1ses!2ssv" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
+    </div>
 </section>
 
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    // Registrar plugin ScrollTrigger
+    if (typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+    
+    const contactSection = document.getElementById('contact');
+    if (!contactSection) return;
+    
+    // Animación para el título
+    gsap.from('.animate-title', {
+      y: -80,
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: contactSection,
+        start: "top 80%",
+        once: true
+      }
+    });
+    
+    // Animación para la sección izquierda
+    gsap.from('.animate-left', {
+      x: -100,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: contactSection,
+        start: "top 80%",
+        once: true
+      }
+    });
+    
+    // Animación para los items individuales
+    gsap.utils.toArray('.animate-item').forEach(item => {
+      gsap.from(item, {
+        x: -30,
+        opacity: 0,
+        duration: 0.6,
+        delay: parseFloat(item.style.getPropertyValue('--delay')) || 0,
+        ease: "back.out",
+        scrollTrigger: {
+          trigger: contactSection,
+          start: "top 80%",
+          once: true
+        }
+      });
+    });
+    
+    // Animación para la sección derecha (mapa)
+    gsap.from('.animate-right', {
+      x: 100,
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: contactSection,
+        start: "top 80%",
+        once: true
+      }
+    });
+  });
+</script>
+
 <style>
+  .animate-title,
+  .animate-left,
+  .animate-right,
+  .animate-item {
+    will-change: transform, opacity;
+  }
   section {
     position: relative;
     background-image: url("/img/background_contact.svg");

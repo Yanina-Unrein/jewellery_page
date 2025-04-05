@@ -1,9 +1,9 @@
 ---
-import { loadTranslations } from "../i18n/ui";
 import Carousel from "./carrouselReferences/Carrousel";
+import { gsap } from 'gsap';
 
 const { lang } = Astro.params;
-const translations = loadTranslations(lang);
+const { translations } = Astro.props;
 ---
 
 <section id="references" class="references-section">
@@ -11,7 +11,7 @@ const translations = loadTranslations(lang);
     <div class="content-wrapper">
         <div class="content-container">
             <div class="title-container">
-                <h2>{translations.references.title}</h2>
+                <h2 class="slide-in-title">{translations.references.title}</h2>
             </div>
             <div class="cards-container">
                 <Carousel translations={translations} client:only="react" />
@@ -19,6 +19,34 @@ const translations = loadTranslations(lang);
         </div>
     </div>
 </section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    // Registrar plugin ScrollTrigger
+    if (typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+    
+    const section = document.getElementById('references');
+    if (!section) return;
+    
+    // Animación para el título
+    gsap.from('.slide-in-title', {
+      x: -150,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        once: true
+      }
+    });
+  });
+</script>
 
 <style>
     .references-section {

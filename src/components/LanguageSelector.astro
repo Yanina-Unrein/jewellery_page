@@ -1,17 +1,45 @@
 ---
 import { languages, defaultLang } from '../i18n/ui';
+import { anchors } from '../i18n/anchors';
 
-const { currentLang } = Astro.props;  // Recibe el idioma actual
-const currentPath = Astro.url.pathname;
+const { currentLang } = Astro.props;
+const currentUrl = Astro.url;
 
-function getLanguageUrl(lang: string) {
-  if (lang === defaultLang) {
-    const newPath = currentPath.replace(/^\/[^/]+/, '') || '/';
-    return newPath;
+function getLanguageUrl(targetLang: string) {
+  const currentPath = currentUrl.pathname;
+  const currentHash = currentUrl.hash;
+  
+  // Si hay un anchor en la URL actual
+  if (currentHash) {
+    const currentAnchor = currentHash.substring(1);
+    
+    // Buscamos el anchor equivalente en el idioma destino
+    let targetAnchor = currentAnchor;
+    
+    // Primero buscamos en el idioma actual
+    const currentLangAnchors = Object.entries(anchors[currentLang]);
+    const foundAnchor = currentLangAnchors.find(([_, value]) => value === currentAnchor);
+    
+    // Si encontramos una correspondencia, usamos la clave para el idioma destino
+    if (foundAnchor) {
+      const [key] = foundAnchor;
+      targetAnchor = anchors[targetLang][key] || currentAnchor;
+    }
+    
+    // Construimos la URL
+    if (targetLang === defaultLang) {
+      return `/#${targetAnchor}`;
+    } else {
+      return `/${targetLang}/#${targetAnchor}`;
+    }
+  }
+
+  // Para rutas sin anchor
+  if (targetLang === defaultLang) {
+    return currentPath.replace(/^\/[^/]+/, '') || '/';
   } else {
     const path = currentPath.replace(/^\/[^/]+/, '');
-    const newUrl = `/${lang}${path}`;
-    return newUrl;
+    return `/${targetLang}${path}`;
   }
 }
 ---

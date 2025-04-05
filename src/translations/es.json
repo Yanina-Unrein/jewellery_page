@@ -7,7 +7,7 @@
     "navbar": {
         "home": "Inicio",
         "about": "Sobre Melo",
-        "gallery": "Cátalogo",
+        "gallery": "Catálogo",
         "contact": "Contacto",
         "logo": "/iconLogo/logo_nombre.svg", 
         "alt": "Logo Melo joyeria",
@@ -48,6 +48,34 @@
             "Para nosotros, cada accesorio es más que una joya: es una obra de arte hecha con amor, precisión y atención al detalle. Queremos que cada cliente encuentre en nuestras creaciones un complemento perfecto que exprese su esencia y personalidad."
         ],
         "btn_cta":"Descubre más en nuestro Instagram"
+    },
+    "materials": {
+        "title": "Nuestros Materiales",
+        "paragraph": "En Melo Joyería, seleccionamos cuidadosamente cada material para garantizar la calidad, durabilidad y belleza de nuestras piezas. Utilizamos insumos que no solo ofrecen un acabado sofisticado, sino que también aseguran resistencia y comodidad para el día a día.",
+        "paragraph_list": "Nuestros materiales incluyen",
+        "list": [
+            {
+                "title": "Oro Laminado:",
+                "description": "Una opción elegante y accesible que mantiene el brillo y la apariencia del oro sólido, con una alta resistencia al desgaste."
+            },
+            {
+                "title": "Acero Inoxidable:",
+                "description": "Perfecto para quienes buscan durabilidad y resistencia a la corrosión. Ideal para piezas que se usan a diario sin perder su brillo."
+            },
+            {
+                "title": "Perlas Naturales:",
+                "description": "Cada perla es única y añade un toque de sofisticación y feminidad a nuestros diseños."
+            },
+            {
+                "title": "Perlas de Algodón:",
+                "description": "Una alternativa ligera y delicada, con una textura especial que aporta un encanto distintivo a nuestras joyas."
+            },
+            {
+                "title": "Piedras Naturales:",
+                "description": "Elementos con significados especiales y propiedades energéticas, que convierten cada pieza en un accesorio con personalidad y estilo."
+            }
+        ],
+        "paragraph_cta":"Cada material es seleccionado con la intención de ofrecer piezas únicas, exclusivas y de gran calidad. En Melo Joyería, creemos que los detalles marcan la diferencia, y por eso trabajamos con los mejores materiales para crear joyas que resalten y se conviertan en parte de tu historia."
     },
     "references":{
         "title":"Experiencias que Brillan"
@@ -91,7 +119,7 @@
                 "home": "Inicio"
             },
             {
-                "gallery": "Cátalogo"
+                "gallery": "Catálogo"
             },
             {
                 "about": "Sobre Melo"
@@ -101,5 +129,11 @@
             }
         ],
         "copyright": "Desarrollado por Yanina Unrein | © 2024 Melo Jewelry. Todos los derechos reservados."
+    },
+    "notFound": {
+        "title": "404",
+        "subTitle": "¡Ups! La joya que buscas no brilla aquí...",
+       " paragraph": "La página que estás buscando no existe o ha sido movida.",
+        "btn": "Volver al inicio"
     }
 }

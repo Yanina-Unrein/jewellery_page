@@ -1,36 +1,92 @@
 ---
-import { loadTranslations } from "../i18n/ui";
+import { getAnchor } from "../i18n/anchors";
 import BtnLayout from "./BtnLayout.astro";
-
+import { gsap } from 'gsap';
 
 const { lang } = Astro.params;
-const translations = loadTranslations(lang);
+const { translations } = Astro.props;
 ---
 
 <section>
-    <div class="about-container" id="about">
-      <div>
+    <div class="about-container" id={getAnchor(lang, 'about')}>
+      <div class="logo-animate-container">
         <picture class="logo-container">
-            <img src={translations.about.logo} alt={translations.about.alt_logo} loading="lazy" >
+            <img src={translations.about.logo} alt={translations.about.alt_logo} loading="lazy">
         </picture>
       </div>
-        <div class="content-about-container">
-            <div class="logo-section">
-                <picture class="melo-img-container">
-                    <img src="/img/about.svg" alt={translations.about.alt_img} loading="lazy" >
-                </picture>
-            </div>
-            <div class="content-about">
-                <h2>{translations.about.title}</h2>
-                {translations.about.paragraphs.map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
-                ))}
-                <BtnLayout text={translations.about.btn_cta} color="var(--golden-sand)" />
-            </div>
-        </div>
+      <div class="content-about-container">
+          <div class="logo-section">
+              <picture class="melo-img-container">
+                  <img src="/img/about.svg" alt={translations.about.alt_img} loading="lazy">
+              </picture>
+          </div>
+          <div class="content-about">
+              <h2 class="animate-text">{translations.about.title}</h2>
+              {translations.about.paragraphs.map((paragraph, index) => (
+                  <p class="animate-text" style={`--delay: ${0.2 + index * 0.1}s`}>{paragraph}</p>
+              ))}
+              <BtnLayout href="https://www.instagram.com/melojoyeria/" text={translations.about.btn_cta} color="var(--golden-sand)" class="animate-text" style="--delay: 0.5s" />
+          </div>
+      </div>
     </div>
 </section>
 
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    // Registrar plugin si es necesario
+    if (typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+    
+    const aboutSection = document.getElementById('about');
+    if (!aboutSection) return;
+    
+    // Animación para el logo
+    gsap.from('.logo-container', {
+      x: -100,
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: aboutSection,
+        start: "top 80%",
+        once: true
+      }
+    });
+    
+    // Animación para textos
+    gsap.utils.toArray('.animate-text').forEach((text, i) => {
+      gsap.from(text, {
+        y: -50,
+        opacity: 0,
+        duration: 0.8,
+        delay: i * 0.1,
+        ease: "back.out(1.2)",
+        scrollTrigger: {
+          trigger: aboutSection,
+          start: "top 80%",
+          once: true
+        }
+      });
+    });
+
+    // Animación para la imagen
+    gsap.from('.melo-img-container', {
+      scale: 0.95,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: aboutSection,
+        start: "top 80%",
+        once: true
+      }
+    });
+  });
+</script>
 
 <style>
 section{

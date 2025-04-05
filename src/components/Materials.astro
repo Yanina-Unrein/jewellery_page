@@ -1,0 +1,61 @@
+---
+import { gsap } from 'gsap';
+import MaterialSlider from './materialSlider/MaterialSlider';
+
+interface Material {
+  title: string;
+  description: string;
+}
+
+const { translations } = Astro.props;
+---
+
+<section id="materials">
+    <div class="materials-header">
+        <h2>{translations.materials.title}</h2>
+        <p>{translations.materials.paragraph}</p>
+        <span class="list-intro">{translations.materials.paragraph_list}</span>
+    </div>
+    <div>
+        <MaterialSlider materials={translations.materials.list} client:load />
+    </div>
+</section>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    background: var(--beige);
+    padding: 60px 10px;
+  }
+
+  .materials-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  h2 {
+    color: var(--golden-sand);
+    padding-bottom: 20px;
+  }
+
+  p, span {
+    color: var(--black);
+    font-size: clamp(1rem, 0.9825rem + 0.0877vw, 1.125rem);
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  span {
+    padding-top: 15px;
+  }
+
+  @media (min-width: 600px) {
+    p, span {
+      max-width: 80%;
+    }
+  }
+</style>

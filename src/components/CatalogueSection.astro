@@ -1,26 +1,61 @@
 ---
-import { loadTranslations } from "../i18n/ui";
 import CategoriesGallery from "./CategoriesGallery.astro";
 import Mansonry from "./Mansonry.astro";
-
+import { gsap } from 'gsap';
 
 const { lang } = Astro.params;
-const translations = loadTranslations(lang);
+const { translations } = Astro.props;
 ---
 
 <section class="catalogue-container" id="catalogue">
-    <div>
-        <h2>{translations.catalogue.title}</h2>
-        <p>{translations.catalogue.paragraph}</p>
+    <div class="text-container">
+        <h2 class="slide-in">{translations.catalogue.title}</h2>
+        <p class="slide-in">{translations.catalogue.paragraph}</p>
     </div>
     <div class="view-category">
         <CategoriesGallery translations={translations} />
     </div>
     <div class="mansory-container">
-        <p class="mansonry-title">{translations.catalogue.paragraph_cta}</p>
+        <p class="mansonry-title slide-in">{translations.catalogue.paragraph_cta}</p>
         <Mansonry />
     </div>
 </section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    // Registrar plugin ScrollTrigger
+    if (typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+    
+    const section = document.getElementById('catalogue');
+    if (!section) return;
+    
+    // Configuración inicial para elementos
+    gsap.set('.slide-in', {
+      x: -100,
+      opacity: 0
+    });
+    
+    // Animación para todos los elementos con clase slide-in
+    gsap.utils.toArray('.slide-in').forEach(el => {
+      gsap.to(el, {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 80%",
+          once: true
+        }
+      });
+    });
+  });
+</script>
 
 
 <style>
@@ -48,6 +83,10 @@ const translations = loadTranslations(lang);
     .mansonry-title{
         color: var(--walnut);
         font-weight: 500;
+    }
+
+    .slide-in {
+        will-change: transform, opacity;
     }
 
 </style>

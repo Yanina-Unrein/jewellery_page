@@ -1,27 +1,53 @@
 ---
-import { loadTranslations } from "../i18n/ui";
 import BtnLayout from "./BtnLayout.astro";
-
+import { gsap } from 'gsap';
 
 const { lang } = Astro.params;
-const translations = loadTranslations(lang);
-
+const { translations } = Astro.props;
 ---
 
 <section class="hero" id="home">
   <div class="hero-content">
-    <h1>
-        <img class="logo-hero" src={translations.hero.logo} alt={translations.hero.alt} loading="lazy" >
+    <h1 class="hero-title">
+      <img class="logo-hero" src={translations.hero.logo} alt={translations.hero.alt} loading="lazy">
     </h1>
-    <p>{translations.hero.content}</p>
-    <BtnLayout text={translations.hero.btn_cta} color="var(--linen)" />
+    <p class="hero-text">{translations.hero.content}</p>
+    <BtnLayout href="https://www.instagram.com/melojoyeria/" text={translations.hero.btn_cta} color="var(--linen)" class="hero-button" />
   </div>
   <div class="hero-image-container">
     <picture class="hero-image">
-          <img class="img-hero" src={translations.hero.img} alt={translations.hero.alt_img} loading="lazy">
+      <img class="img-hero" src={translations.hero.img} alt={translations.hero.alt_img} loading="lazy">
     </picture>
   </div>
 </section>
+
+<script>
+  import { gsap } from 'gsap';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const title = document.querySelector('.hero-title');
+    const text = document.querySelector('.hero-text');
+    
+    if (title) {
+      gsap.from(title, {
+        y: 100,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power3.out"
+      });
+    }
+    
+    if (text) {
+      gsap.from(text, {
+        y: -50,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+        delay: 0.4
+      });
+    }
+  });
+</script>
 
 <style>
   .hero {

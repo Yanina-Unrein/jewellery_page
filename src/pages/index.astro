@@ -8,25 +8,25 @@ import About from '../components/About.astro';
 import ReferencesSection from '../components/ReferencesSection.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
+import Materials from '../components/Materials.astro';
 
 const translations = loadTranslations(defaultLang);
+const { lang } = Astro.params;
 ---
 
 <Layout lang={defaultLang} translations={translations}>
     <header>
-        <Navbar client:load />
+        <Navbar translations={translations} client:load />
     </header>
-    
-    <Hero client:load />
-    
     <main>
-        <CatalogueSection client:load />
-        <About client:load />
-        <ReferencesSection client:load />
-        <Contact client:load />
+        <Hero translations={translations} client:load />
+        <CatalogueSection translations={translations} client:load />
+        <About translations={translations} lang={lang} client:load />
+        <Materials translations={translations} client:load />
+        <ReferencesSection translations={translations} client:load />
+        <Contact translations={translations} client:load />
     </main>
-    
     <footer>
-        <Footer client:load />
+        <Footer translations={translations} client:load />
     </footer>
 </Layout>
