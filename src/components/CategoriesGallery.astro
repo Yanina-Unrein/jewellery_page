@@ -90,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const gallery = document.getElementById('image-gallery');
   const descriptionEl = document.querySelector('.category-description');
   
-  // Objeto de imágenes completo como string JSON
   const allImages = {
     'anillos': ["anillos/1.svg","anillos/2.svg","anillos/3.svg","anillos/4.svg","anillos/5.svg","anillos/6.svg"],
     'collares y dijes': ["collares/1.svg","collares/2.svg","collares/3.svg","collares/4.svg","collares/5.svg"],
@@ -108,10 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const imageKey = button.dataset.imagekey;
       const description = button.dataset.description;
       
-      // Actualizar descripción
       descriptionEl.textContent = description;
       
-      // Actualizar galería con las imágenes correctas
       const images = allImages[imageKey] || [];
       gallery.innerHTML = images.map(image => `
         <img 
@@ -122,7 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
         />
       `).join('');
       
-      // Actualizar botón activo
       buttons.forEach(btn => btn.classList.remove('active'));
       button.classList.add('active');
     });

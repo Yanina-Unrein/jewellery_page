@@ -15,7 +15,7 @@ const MaterialSlider = ({ materials }) => {
 
   const calculateDimensions = () => {
     const screenWidth = window.innerWidth;
-    const useSlider = screenWidth < 600; // Cambiado a 768px como breakpoint estándar
+    const useSlider = screenWidth < 600;
     setIsSliderActive(useSlider);
 
     if (!useSlider || !sliderRef.current) return;
@@ -26,11 +26,11 @@ const MaterialSlider = ({ materials }) => {
     const availableWidth = containerWidth - containerPadding;
 
     let newSlidesPerView = 1;
-    let newSlideWidth = availableWidth * 0.9; // 90% del ancho disponible
+    let newSlideWidth = Math.max(250, availableWidth * 0.9);
 
     if (availableWidth >= 480) {
       newSlidesPerView = 1.2;
-      newSlideWidth = (availableWidth - 30) / 1.2; // Restamos espacio para el gap
+      newSlideWidth = (availableWidth - 30) / 1.2;
     }
 
     setSlidesPerView(newSlidesPerView);
@@ -57,66 +57,76 @@ const MaterialSlider = ({ materials }) => {
     setCurrentIndex(Math.min(Math.max(index, 0), maxIndex));
   };
 
-  // Manejo de touch events para el slider
-  const handleTouchStart = (e) => {
-    e.stopPropagation();
-    touchStartX.current = e.touches[0].clientX;
-    isDragging.current = true;
-    if (trackRef.current) {
-      trackRef.current.style.transition = 'none';
-    }
-  };
+  // 👉 Touch logic usando addEventListener (sin warnings)
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
 
-  const handleTouchMove = (e) => {
-    if (!isDragging.current) return;
-    e.preventDefault();
-    touchEndX.current = e.touches[0].clientX;
-  };
+    const handleTouchStart = (e) => {
+      e.stopPropagation();
+      touchStartX.current = e.touches[0].clientX;
+      isDragging.current = true;
+      if (trackRef.current) {
+        trackRef.current.style.transition = 'none';
+      }
+    };
 
-  const handleTouchEnd = () => {
-    if (!isDragging.current) return;
-    isDragging.current = false;
+    const handleTouchMove = (e) => {
+      if (!isDragging.current) return;
+      e.preventDefault();
+      touchEndX.current = e.touches[0].clientX;
+    };
 
-    if (trackRef.current) {
-      trackRef.current.style.transition = '';
-    }
+    const handleTouchEnd = () => {
+      if (!isDragging.current) return;
+      isDragging.current = false;
+      if (trackRef.current) {
+        trackRef.current.style.transition = '';
+      }
 
-    const deltaX = touchStartX.current - touchEndX.current;
-    if (deltaX > 50) {
-      goToSlide(currentIndex + 1);
-    } else if (deltaX < -50) {
-      goToSlide(currentIndex - 1);
-    }
-  };
+      const deltaX = touchStartX.current - touchEndX.current;
+      if (deltaX > 50) {
+        goToSlide(currentIndex + 1);
+      } else if (deltaX < -50) {
+        goToSlide(currentIndex - 1);
+      }
+    };
+
+    slider.addEventListener("touchstart", handleTouchStart, { passive: false });
+    slider.addEventListener("touchmove", handleTouchMove, { passive: false });
+    slider.addEventListener("touchend", handleTouchEnd);
+
+    return () => {
+      slider.removeEventListener("touchstart", handleTouchStart);
+      slider.removeEventListener("touchmove", handleTouchMove);
+      slider.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [currentIndex, slidesPerView]);
 
   return (
-    <div 
-      ref={sliderRef} 
+    <div
+      ref={sliderRef}
       className={`materials-wrapper ${isSliderActive ? "slider-mode" : "grid-mode"}`}
     >
       {isSliderActive ? (
         <>
-          <div 
-            className="materials-slider-container"
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
+          <div className="materials-slider-container">
             <div
               className="materials-slider-track"
               ref={trackRef}
-              style={{ 
+              style={{
                 transform: `translateX(-${currentIndex * (slideWidth + 16)}px)`,
                 width: `${materials.length * (slideWidth + 16)}px`
               }}
             >
               {materials.map((material, index) => (
-                <div 
-                  key={index} 
-                  className="material-slide" 
+                <div
+                  key={index}
+                  className="material-slide"
                   style={{ width: `${slideWidth}px` }}
                 >
                   <div className="material-card">
+                    <img src={material.img} alt={material.img_alt} className="material-image" />
                     <h3>{material.title}</h3>
                     <p>{material.description}</p>
                   </div>
@@ -139,6 +149,7 @@ const MaterialSlider = ({ materials }) => {
         <div className="materials-grid">
           {materials.map((material, index) => (
             <div key={index} className="material-card">
+              <img src={material.img} alt={material.img_alt} className="material-image" />
               <h3>{material.title}</h3>
               <p>{material.description}</p>
             </div>

@@ -1,4 +1,5 @@
 ---
+import { getLocalizedAnchor } from "../i18n/ui";
 import BtnLayout from "./BtnLayout.astro";
 import { gsap } from 'gsap';
 
@@ -6,7 +7,7 @@ const { lang } = Astro.params;
 const { translations } = Astro.props;
 ---
 
-<section class="hero" id="home">
+<section class="hero" id={getLocalizedAnchor('home', lang)}>
   <div class="hero-content">
     <h1 class="hero-title">
       <img class="logo-hero" src={translations.hero.logo} alt={translations.hero.alt} loading="lazy">

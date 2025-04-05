@@ -55,23 +55,27 @@
         "paragraph_list": "Nuestros materiales incluyen",
         "list": [
             {
-                "title": "Oro Laminado:",
+                "img": "/img/oro-laminado.svg",
+                "alt_img": "Pulsera de oro con un charm de moneda y una flor, destacando su diseño elegante y detalles delicados.",
+                "title": "Oro Laminado",
                 "description": "Una opción elegante y accesible que mantiene el brillo y la apariencia del oro sólido, con una alta resistencia al desgaste."
             },
             {
-                "title": "Acero Inoxidable:",
+                "img": "/aros/1.svg",
+                "alt_img": "Conjunto de dos aretes dorados y una pulsera adornada con piedras rojas, exhibidos sobre un fondo liso.",
+                "title": "Acero Inoxidable",
                 "description": "Perfecto para quienes buscan durabilidad y resistencia a la corrosión. Ideal para piezas que se usan a diario sin perder su brillo."
             },
             {
-                "title": "Perlas Naturales:",
+                "title": "Perlas Naturales",
                 "description": "Cada perla es única y añade un toque de sofisticación y feminidad a nuestros diseños."
             },
             {
-                "title": "Perlas de Algodón:",
+                "title": "Perlas de Algodón",
                 "description": "Una alternativa ligera y delicada, con una textura especial que aporta un encanto distintivo a nuestras joyas."
             },
             {
-                "title": "Piedras Naturales:",
+                "title": "Piedras Naturales",
                 "description": "Elementos con significados especiales y propiedades energéticas, que convierten cada pieza en un accesorio con personalidad y estilo."
             }
         ],

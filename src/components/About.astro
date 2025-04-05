@@ -1,14 +1,14 @@
 ---
-import { getAnchor } from "../i18n/anchors";
+import { getLocalizedAnchor } from "../i18n/ui";
 import BtnLayout from "./BtnLayout.astro";
 import { gsap } from 'gsap';
 
-const { lang } = Astro.params;
+const { lang } = Astro.props;
 const { translations } = Astro.props;
 ---
 
-<section>
-    <div class="about-container" id={getAnchor(lang, 'about')}>
+<section id={getLocalizedAnchor('about', lang)}>
+    <div class="about-container" >
       <div class="logo-animate-container">
         <picture class="logo-container">
             <img src={translations.about.logo} alt={translations.about.alt_logo} loading="lazy">
@@ -22,8 +22,8 @@ const { translations } = Astro.props;
           </div>
           <div class="content-about">
               <h2 class="animate-text">{translations.about.title}</h2>
-              {translations.about.paragraphs.map((paragraph, index) => (
-                  <p class="animate-text" style={`--delay: ${0.2 + index * 0.1}s`}>{paragraph}</p>
+              {translations.about.paragraphs.map((paragraph: string, index: number) => (
+                <p class="animate-text" style={`--delay: ${0.2 + index * 0.1}s`}>{paragraph}</p>
               ))}
               <BtnLayout href="https://www.instagram.com/melojoyeria/" text={translations.about.btn_cta} color="var(--golden-sand)" class="animate-text" style="--delay: 0.5s" />
           </div>
@@ -59,7 +59,7 @@ const { translations } = Astro.props;
     
     // Animación para textos
     gsap.utils.toArray('.animate-text').forEach((text, i) => {
-      gsap.from(text, {
+      gsap.from(text as HTMLElement, {
         y: -50,
         opacity: 0,
         duration: 0.8,

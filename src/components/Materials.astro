@@ -16,7 +16,7 @@ const { translations } = Astro.props;
         <p>{translations.materials.paragraph}</p>
         <span class="list-intro">{translations.materials.paragraph_list}</span>
     </div>
-    <div>
+    <div class="materials-list">
         <MaterialSlider materials={translations.materials.list} client:load />
     </div>
 </section>
@@ -25,8 +25,10 @@ const { translations } = Astro.props;
   section {
     display: flex;
     flex-direction: column;
+    gap: 30px;
     background: var(--beige);
     padding: 60px 10px;
+
   }
 
   .materials-header {
@@ -53,9 +55,16 @@ const { translations } = Astro.props;
     padding-top: 15px;
   }
 
+
   @media (min-width: 600px) {
     p, span {
       max-width: 80%;
+    }
+  }
+
+  @media(min-width: 1400px) {
+    .materials-list{
+      padding: 10px 60px;
     }
   }
 </style>

@@ -1,5 +1,5 @@
 ---
-import { loadTranslations } from "../i18n/ui";
+import { getLocalizedAnchor } from "../i18n/ui";
 import BtnLayout from "./BtnLayout.astro";
 import ContactInfo from "./ContactInfo.astro";
 import { gsap } from 'gsap';
@@ -9,7 +9,7 @@ const { translations } = Astro.props;
 const contactInfo = translations.contact["contact-info"];
 ---
 
-<section id="contact">
+<section id={getLocalizedAnchor('contact', lang)}>
     <div class="title-contact animate-title">
         <h2>{translations.contact.title}</h2>
         <span>{translations.contact.paragraph}</span>

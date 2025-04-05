@@ -54,23 +54,27 @@
         "paragraph_list": "Our materials include",
         "list": [
             {
-                "title": "Gold-Filled:",
+                "img": "/img/oro-laminado.svg",
+                "alt_img": "A gold bracelet featuring a coin charm and a delicate flower design, showcasing elegance and intricate craftsmanship.",
+                "title": "Gold-Filled",
                 "description": "An elegant and accessible option that maintains the shine and appearance of solid gold, with high resistance to wear."
             },
             {
-                "title": "Stainless Steel:",
+                "img": "/aros/1.svg",
+                "alt_img": "Gold-plated earrings and a red-stone bracelet showcased together, highlighting their intricate designs and luxurious appearance.",
+                "title": "Stainless Steel",
                 "description": "Perfect for those looking for durability and corrosion resistance. Ideal for pieces worn daily without losing their shine."
             },
             {
-                "title": "Natural Pearls:",
+                "title": "Natural Pearls",
                 "description": "Each pearl is unique and adds a touch of sophistication and femininity to our designs."
             },
             {
-                "title": "Cotton Pearls:",
+                "title": "Cotton Pearls",
                 "description": "A lightweight and delicate alternative with a special texture that brings a distinctive charm to our jewelry."
             },
             {
-                "title": "Natural Stones:",
+                "title": "Natural Stones",
                 "description": "Elements with special meanings and energetic properties that turn each piece into an accessory full of personality and style."
             }
         ],

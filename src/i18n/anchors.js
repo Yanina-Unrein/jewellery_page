@@ -1,15 +1,15 @@
 export const anchors = {
-        'es': {
-          'home': 'inicio',
-          'about': 'acerca',
-          'gallery': 'catalogo',
-          'contact': 'contacto'
+        es: {
+          home: 'inicio',
+          about: 'acerca',
+          gallery: 'catalogo',
+          contact: 'contacto'
         },
-        'en': {
-          'home': 'home',
-          'about': 'about',
-          'gallery': 'gallery',
-          'contact': 'contact'
+        en: {
+          home: 'home',
+          about: 'about',
+          gallery: 'gallery',
+          contact: 'contact'
         }
 };
   

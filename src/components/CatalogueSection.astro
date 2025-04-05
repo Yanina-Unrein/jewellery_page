@@ -1,13 +1,15 @@
 ---
+import { getLocalizedAnchor } from "../i18n/ui";
 import CategoriesGallery from "./CategoriesGallery.astro";
 import Mansonry from "./Mansonry.astro";
 import { gsap } from 'gsap';
 
 const { lang } = Astro.params;
 const { translations } = Astro.props;
+
 ---
 
-<section class="catalogue-container" id="catalogue">
+<section class="catalogue-container" id={getLocalizedAnchor('gallery', lang)}>
     <div class="text-container">
         <h2 class="slide-in">{translations.catalogue.title}</h2>
         <p class="slide-in">{translations.catalogue.paragraph}</p>
@@ -40,15 +42,14 @@ const { translations } = Astro.props;
       opacity: 0
     });
     
-    // Animación para todos los elementos con clase slide-in
     gsap.utils.toArray('.slide-in').forEach(el => {
-      gsap.to(el, {
+      gsap.to(el as HTMLElement, {
         x: 0,
         opacity: 1,
         duration: 1,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: el,
+          trigger: el as HTMLElement,
           start: "top 80%",
           once: true
         }

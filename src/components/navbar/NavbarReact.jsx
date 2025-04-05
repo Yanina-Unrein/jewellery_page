@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { loadTranslations } from "../../i18n/ui";
+import { loadTranslations, getLocalizedAnchor } from "../../i18n/ui";
 import './navbar.css';
 
 const NavbarReact = ({ lang, children }) => {
@@ -38,7 +38,7 @@ const NavbarReact = ({ lang, children }) => {
     <nav className="navbar">
       {/* Navbar Mobile */}
       <div className="navbar-mobile">
-        <a href="#" className="logo-container-navbar-mobile">
+        <a href={`#${getLocalizedAnchor('home', lang)}`} className="logo-container-navbar-mobile">
           <img src={translations.navbar.logo} alt={translations.navbar.alt} className="logo-navbar-mobile" />
         </a>
         <button className="menu-btn" onClick={toggleMenu} aria-label="Toggle menu">
@@ -53,26 +53,26 @@ const NavbarReact = ({ lang, children }) => {
 
       {/* Menú Mobile */}
       <ul className={`menu ${isOpen ? "open" : ""}`}>
-        <li><a href="#home" onClick={closeMenu}>{translations.navbar.home}</a></li>
-        <li><a href="#about" onClick={closeMenu}>{translations.navbar.about}</a></li>
-        <li><a href="#catalogue" onClick={closeMenu}>{translations.navbar.gallery}</a></li>
-        <li><a href="#contact" onClick={closeMenu}>{translations.navbar.contact}</a></li>
+        <li><a href={`#${getLocalizedAnchor('home', lang)}`} onClick={closeMenu}>{translations.navbar.home}</a></li>
+        <li><a href={`#${getLocalizedAnchor('about', lang)}`} onClick={closeMenu}>{translations.navbar.about}</a></li>
+        <li><a href={`#${getLocalizedAnchor('gallery', lang)}`} onClick={closeMenu}>{translations.navbar.gallery}</a></li>
+        <li><a href={`#${getLocalizedAnchor('contact', lang)}`} onClick={closeMenu}>{translations.navbar.contact}</a></li>
         {isMobile && <li className="language-button">{children}</li>}
       </ul>
 
       {/* Navbar Desktop */}
       <div className="navbar-desktop">
         <ul className="menu-left">
-          <li><a href="#home">{translations.navbar.home}</a></li>
-          <li><a href="#about">{translations.navbar.about}</a></li>
+          <li><a href={`#${getLocalizedAnchor('home', lang)}`}>{translations.navbar.home}</a></li>
+          <li><a href={`#${getLocalizedAnchor('about', lang)}`}>{translations.navbar.about}</a></li>
         </ul>
-        <a href="#home" className="logo-container-navbar">
+        <a href={`#${getLocalizedAnchor('home', lang)}`} className="logo-container-navbar">
           <img src={translations.navbar.logo} alt={translations.navbar.alt} className="logo-navbar" />
         </a>
         <div className="navbar-right">
           <ul className="menu-right">
-            <li><a href="#catalogue">{translations.navbar.gallery}</a></li>
-            <li><a href="#contact">{translations.navbar.contact}</a></li>
+            <li><a href={`#${getLocalizedAnchor('gallery', lang)}`}>{translations.navbar.gallery}</a></li>
+            <li><a href={`#${getLocalizedAnchor('contact', lang)}`}>{translations.navbar.contact}</a></li>
           </ul>
           <div className="language-selector-desktop">
             {children}
