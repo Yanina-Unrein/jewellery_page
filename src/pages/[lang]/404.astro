@@ -1,22 +1,23 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { defaultLang, loadTranslations } from "../../i18n/ui";
-import BtnLayout from '../../components/BtnLayout.astro';
-
-const { lang } = Astro.params;
-const currentLang = lang && ["en", "es"].includes(lang) ? lang : 'es';
-
-const translations = loadTranslations(currentLang);
+import Layout from "@/layouts/Layout.astro";
+import { defaultLang, loadTranslations } from "@/i18n/ui";
 
 export async function getStaticPaths() {
   return [
-    { params: { lang: 'es' } },
-    { params: { lang: 'en' } },
+    { params: { lang: "es" } },
+    { params: { lang: "en" } },
   ];
 }
+
+const { lang } = Astro.params;
+const currentLang = ["en", "es"].includes(lang) ? lang : defaultLang;
+const translations = await loadTranslations(currentLang);
+
+Astro.response.status = 404;
+const homePath = currentLang === defaultLang ? '/' : `/${currentLang}`;
 ---
 
-<Layout lang={currentLang} translations={translations} title={translations.notFound.title}>
+<Layout title={translations.notFound.title} lang={lang}>
   <main class="not-found-container">
     <div class="not-found-content">
       <div class="error-code">{translations.notFound.title}</div>
@@ -25,18 +26,13 @@ export async function getStaticPaths() {
         {translations.notFound.paragraph}
       </p>
       <div class="action">
-        <BtnLayout 
-          text={translations.notFound.btn} 
-          href="/" 
-          color="var(--golden-sand)"
-          class="btn-404"
-        />
+        <a href={homePath} class="btn-404">{translations.notFound.btn}</a>
       </div>
     </div>
     <div class="illustration">
       <img 
         src="/img/escaparate.svg" 
-        alt="Ilustración página no encontrada" 
+        alt={translations.notFound.subTitle} 
         width="500" 
         height="500"
         loading="eager"
@@ -87,6 +83,26 @@ export async function getStaticPaths() {
   .btn-404 {
     margin-top: 1.5rem;
   }
+  a{
+      text-decoration: none;
+      width: auto;
+      display: inline-block;
+      padding: 20px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      border-radius: 20px;
+      color: var(--black);
+      background: var(--golden-sand);
+      transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  a:hover{
+      transform: translateY(-4px);
+      box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  }
+  
 
   .illustration img {
     max-width: 100%;
@@ -118,7 +134,6 @@ export async function getStaticPaths() {
 <script>
     document.addEventListener('DOMContentLoaded', () => {
       if (typeof gsap !== 'undefined') {
-        // Efecto de joya perdida
         gsap.from('.error-code', {
           scale: 0.5,
           opacity: 0,
@@ -126,7 +141,6 @@ export async function getStaticPaths() {
           ease: "elastic.out(1, 0.5)"
         });
         
-        // Efecto de texto apareciendo
         gsap.from('.subtitle', {
           y: -30,
           opacity: 0,
@@ -135,7 +149,6 @@ export async function getStaticPaths() {
           ease: "power2.out"
         });
         
-        // Efecto de mensaje con brillo
         gsap.from('.message', {
           rotation: -5,
           opacity: 0,
@@ -144,7 +157,6 @@ export async function getStaticPaths() {
           ease: "back.out(2)"
         });
         
-        // Efecto botón como joya que aparece
         gsap.from('.btn-404', {
           y: 20,
           opacity: 0,
@@ -153,7 +165,6 @@ export async function getStaticPaths() {
           ease: "bounce.out"
         });
         
-        // Efecto ilustración
         gsap.from('.illustration', {
           scale: 0.8,
           opacity: 0,
