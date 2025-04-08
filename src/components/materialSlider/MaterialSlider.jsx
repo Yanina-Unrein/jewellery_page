@@ -73,8 +73,12 @@ const MaterialSlider = ({ materials }) => {
 
     const handleTouchMove = (e) => {
       if (!isDragging.current) return;
-      e.preventDefault();
       touchEndX.current = e.touches[0].clientX;
+      const deltaX = touchStartX.current - touchEndX.current;
+      
+      if (Math.abs(deltaX) > 10) {
+        e.preventDefault();
+      }
     };
 
     const handleTouchEnd = () => {
