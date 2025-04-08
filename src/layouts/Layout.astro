@@ -25,10 +25,9 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://tudominio.com').toStri
 	<body>
 		<!-- Spinner de carga -->
 		<div id="spinner-wrapper">
-		  <Spinner size="200px" speed="3s" />
+		  <Spinner size="200px" />
 		</div>
-	  
-		<!-- Contenido principal -->
+	
 		<main id="main-content" class="content-hidden">
 		  <slot />
 		</main>
@@ -65,7 +64,6 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://tudominio.com').toStri
 			});
 		  }
 	  
-		  // Iniciar la verificación
 		  if (document.readyState === 'complete') {
 			checkGSAP();
 		  } else {
@@ -79,7 +77,6 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://tudominio.com').toStri
 
 <style is:global>
     :root {
-      /* 🎨 Colores */
 	  	--golden-sand: #C3A776; 
 		--linen: #EDE0D4;        
 		--coffee-brown: #89644C; 

@@ -1,5 +1,5 @@
 ---
-const { size = "100px", speed = "1.5s" } = Astro.props;
+const { size = "100px" } = Astro.props;
 ---
 
 <div class="spinner-overlay">
@@ -26,14 +26,5 @@ const { size = "100px", speed = "1.5s" } = Astro.props;
     background-color: rgba(255, 255, 255, 0.8);
     z-index: 9999;
     pointer-events: none; /* Permite interactuar con elementos debajo */
-  }
-  
-  .logo-spinner {
-    animation: spin ${speed} linear infinite;
-  }
-
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
   }
 </style>

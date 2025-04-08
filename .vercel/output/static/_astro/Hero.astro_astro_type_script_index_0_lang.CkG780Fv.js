@@ -1,0 +1,1 @@
+import{g as o}from"./index.Brfk6Bdo.js";document.addEventListener("DOMContentLoaded",()=>{const e=document.querySelector(".hero-title"),t=document.querySelector(".hero-text");e&&o.from(e,{y:100,opacity:0,duration:1.2,ease:"power3.out"}),t&&o.from(t,{y:-50,opacity:0,duration:1,ease:"power2.out",delay:.4})});

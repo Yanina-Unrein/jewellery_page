@@ -1,3 +1,4 @@
+'use client';
 import { useState, useEffect } from 'react';
 import { loadTranslations, getLocalizedAnchor } from "../../i18n/ui";
 import './navbar.css';

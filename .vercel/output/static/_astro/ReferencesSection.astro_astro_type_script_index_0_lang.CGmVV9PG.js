@@ -1,0 +1,1 @@
+import{g as t}from"./index.Brfk6Bdo.js";import{S as r}from"./ScrollTrigger.6qCihK2t.js";document.addEventListener("DOMContentLoaded",()=>{typeof r<"u"&&t.registerPlugin(r);const e=document.getElementById("references");e&&t.from(".slide-in-title",{x:-150,opacity:0,duration:1.2,ease:"power3.out",scrollTrigger:{trigger:e,start:"top 80%",once:!0}})});

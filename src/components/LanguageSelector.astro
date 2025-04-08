@@ -24,6 +24,40 @@ function getLanguageUrl(targetLang: string) {
   </a>
 </div>
 
+<script is:inline>
+  // Manejar el cambio de idioma sin recarga completa
+  document.querySelector('[data-lang-switch]')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetLang = e.currentTarget.getAttribute('data-target-lang');
+    const currentPath = window.location.pathname;
+    const currentHash = window.location.hash;
+    
+    // Versión corregida:
+    const cleanPath = currentPath.replace(new RegExp(`^/(${['es','en'].join('|')})`), '');
+    const newPath = targetLang === 'es' ? cleanPath : `/${targetLang}${cleanPath}`;
+    const newUrl = `${newPath}${currentHash}`;
+    
+    // Manejo especial para página 404
+    if (currentPath.includes('404')) {
+      const langPrefix = targetLang === 'es' ? '' : `/${targetLang}`;
+      window.location.href = `${langPrefix}/404${currentHash}`;
+      return;
+    }
+    
+    // Guardar el idioma en localStorage
+    localStorage.setItem('preferredLang', targetLang);
+    
+    // Actualizar la URL y recargar solo los necesarios
+    if (import.meta.env.PROD) {
+      window.location.href = newUrl;
+    } else {
+      // En desarrollo, usa replaceState para mejor experiencia
+      window.history.replaceState({}, '', newUrl);
+      window.location.reload();
+    }
+  });
+</script>
+
 <style>
   .lang-link {
     display: flex;
@@ -31,7 +65,7 @@ function getLanguageUrl(targetLang: string) {
     padding: 0.5rem 1rem;
     text-decoration: none;
     transition: all 0.3s ease;
-    color: var(--coffee-brown);
+    color: #664a38;
     cursor: pointer;
   }
 

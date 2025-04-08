@@ -89,7 +89,7 @@ body.menu-open {
 }
 
 .menu li a {
-  color: var(--coffee-brown);
+  color: #664a38;
   font-size: 1.3rem;
   text-decoration: none;
   cursor: pointer;
@@ -174,7 +174,7 @@ body.menu-open {
   }
 
   .navbar-desktop a {
-      color: var(--coffee-brown);
+      color: #664a38;
       text-decoration: none;
       font-size: 1.2rem;
       position: relative;

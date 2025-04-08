@@ -1,7 +1,7 @@
 ---
 import LanguageSelector from "./LanguageSelector.astro";
+import { defaultLang } from "@/i18n/ui";
 import NavbarReact from "./navbar/NavbarReact";
-import { defaultLang } from "../i18n/ui";
 
 const currentPath = Astro.url.pathname;
 const lang = currentPath.split("/")[1]; 

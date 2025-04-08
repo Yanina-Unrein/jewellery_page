@@ -79,6 +79,7 @@ const { translations } = Astro.props;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding: 0;
         gap: 20px;
         list-style: none;
     }
@@ -152,6 +153,12 @@ const { translations } = Astro.props;
 
         nav ul {
             align-items: flex-start;
+        }
+    }
+
+    @media (min-width: 1440px) {
+        section{
+            padding:60px 40px 20px;
         }
     }
 </style>
