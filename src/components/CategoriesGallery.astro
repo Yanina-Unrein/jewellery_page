@@ -74,7 +74,7 @@ const initialDescription = descriptions[initialData.descKey] || '';
     <div class="gallery active" id="image-gallery">
       {initialImages.map(image => (
         <img 
-          src={`/public/${image}`} 
+          src={`/${image}`} 
           alt={defaultCategory} 
           class="img-gallery" 
           loading="lazy" 
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const images = allImages[imageKey] || [];
       gallery.innerHTML = images.map(image => `
         <img 
-          src="/public/${image}" 
+          src="/${image}" 
           alt="${categoryKey}" 
           class="img-gallery" 
           loading="lazy"

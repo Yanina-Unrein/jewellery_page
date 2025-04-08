@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /carrito/
+Disallow: /checkout/
+Allow: /
+
+Sitemap: https://melojoyeria.com/sitemap.xml

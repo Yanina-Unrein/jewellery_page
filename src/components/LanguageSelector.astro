@@ -1,16 +1,12 @@
 ---
-import { languages, defaultLang, getLocalizedAnchor, getLocalizedURL } from '../i18n/ui';
-import { anchors } from '../i18n/anchors';
+import { defaultLang, getLocalizedURL } from '../i18n/ui';
 
 const { currentLang } = Astro.props;
 const currentUrl = Astro.url;
 
 function getLanguageUrl(targetLang: string) {
-  return getLocalizedURL(
-    currentUrl.pathname,
-    targetLang,
-    currentUrl.hash
-  );
+  const basePath = currentUrl.pathname.replace(`/${currentLang}`, '');
+  return targetLang === defaultLang ? basePath : `/${targetLang}${basePath}`;
 }
 ---
 

@@ -1,19 +1,19 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { defaultLang, languages, loadTranslations } from "@/i18n/ui";
+import { loadTranslations } from "@/i18n/ui";
 
 export const prerender = true;
 
 export async function getStaticPaths() {
-  return Object.keys(languages).map((lang) => ({
-    params: { lang },
-  }));
+  return [
+    { params: { lang: "es", 404: "404" } }, 
+    { params: { lang: "en", 404: "404" } }  
+  ];
 }
 
 const { lang } = Astro.params;
 const translations = loadTranslations(lang);
-const isDefaultLang = lang === defaultLang;
-Astro.response.status = 404;
+Astro.response.status = 404; 
 ---
 
 <Layout title={translations.notFound.title} lang={lang} translations={translations}>
@@ -23,7 +23,7 @@ Astro.response.status = 404;
       <h1 class="subtitle">{translations.notFound.subTitle}</h1>
       <p class="message">{translations.notFound.paragraph}</p>
       <div class="action">
-        <a href={isDefaultLang ? '/' : `/${lang}`} class="btn-404">{translations.notFound.btn}</a>
+        <a href={`/${lang}`} class="btn-404">{translations.notFound.btn}</a>
       </div>
     </div>
     <div class="illustration">

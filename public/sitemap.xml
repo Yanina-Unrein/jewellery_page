@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Español -->
+  <url>
+    <loc>https://melojoyeria.com/</loc>
+    <lastmod>2024-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://melojoyeria.com/en/" />
+  </url>
+  <url>
+    <loc>https://melojoyeria.com/#inicio</loc>
+  </url>
+  <url>
+    <loc>https://melojoyeria.com/#acerca</loc>
+  </url>
+  <url>
+    <loc>https://melojoyeria.com/#catalogo</loc>
+  </url>
+  <url>
+    <loc>https://melojoyeria.com/#materiales</loc>
+  </url>
+  <url>
+    <loc>https://melojoyeria.com/#contacto</loc>
+  </url>
+
+  <!-- Inglés -->
+  <url>
+    <loc>https://melojoyeria.com/en/</loc>
+    <lastmod>2024-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://melojoyeria.com/" />
+  </url>
+  <url>
+    <loc>https://melojoyeria.com/en/#home</loc>
+  </url>
+  <url>
+    <loc>https://melojoyeria.com/en/#about</loc>
+  </url>
+  <url>
+    <loc>https://melojoyeria.com/en/#gallery</loc>
+  </url>
+  <url>
+    <loc>https://melojoyeria.com/en/#contact</loc>
+  </url>
+
+</urlset>

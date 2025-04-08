@@ -4,34 +4,24 @@ import vercel from '@astrojs/vercel';
 
 export default defineConfig({
   integrations: [react()],
+  output: 'static', 
+  adapter: vercel({
+    isr: false,
+    edge: false,
+    errorPages: false
+  }),
   vite: {
     resolve: {
       alias: {
-        '~': new URL('./src/', import.meta.url).pathname
+        '~': new URL('./src/', import.meta.url).pathname,
+        '@': '/src',
       }
     },
     optimizeDeps: {
       include: ['react', 'react-dom']
     }
   },
-  output: 'server',
-  adapter: vercel({
-    isr: false,
-    edgeMiddleware: true,
-    edge: false,
-    functionPerRoute: true,
-  }),
-  redirects: {
-    '/404': '/es/404',
-  },
   devToolbar: {
     enabled: false,
-  },
-  vite: {
-    resolve: {
-      alias: {
-        '@': '/src',
-      },
-    },
   },
 });
