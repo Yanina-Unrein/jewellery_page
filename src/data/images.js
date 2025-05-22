@@ -1,6 +1,6 @@
 export const images = [
-    "/references/testimonio1.svg",
-    "/references/testimonio2.svg",
-    "/references/testimonio3.svg",
-    "/references/testimonio4.svg"
+    "/references/testimonio_cliente1.webp",
+    "/references/testimonio_cliente2.webp",
+    "/references/testimonio_cliente3.webp",
+    "/references/testimonio_cliente4.webp"
   ];

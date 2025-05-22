@@ -1,8 +1,8 @@
 ---
 import { getLocalizedAnchor } from "../i18n/ui";
 import CategoriesGallery from "./CategoriesGallery.astro";
-import Mansonry from "./Mansonry.astro";
 import { gsap } from 'gsap';
+import JewelryCarousel from "./jewelryCarousel/JewelryCarousel";
 
 const { lang } = Astro.params;
 const { translations } = Astro.props;
@@ -19,7 +19,7 @@ const { translations } = Astro.props;
     </div>
     <div class="mansory-container">
         <p class="mansonry-title slide-in">{translations.catalogue.paragraph_cta}</p>
-        <Mansonry />
+         <JewelryCarousel client:load />
     </div>
 </section>
 

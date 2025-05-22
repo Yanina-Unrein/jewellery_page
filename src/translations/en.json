@@ -1,7 +1,7 @@
 {
    "seo": {
         "title": "Melo Jewelry - Handmade Jewelry",
-        "description": "Discover Melo Jewelry, Salvadoran handmade jewelry with unique pieces in gold laminate, stainless steel, pearls, and natural stones. Find your style.",
+        "description": "Salvadoran handmade jewellery company. We design unique pieces that stand out for their originality and attention to detail. Each creation reflects elegance, authenticity and the art of personal expression. Our selection includes both our own designs and carefully chosen pieces that complement our aesthetic and quality proposal.",
         "keywords": "Melo Jewelry, Salvadoran handmade jewelry, jewelry, handmade, unique jewelry, personal style, accessories"
     },
     "navbar": {
@@ -54,13 +54,13 @@
         "paragraph_list": "Our materials include",
         "list": [
             {
-                "img": "/img/oro-laminado.svg",
+                "img": "/materials/oro-laminado.webp",
                 "alt_img": "A gold bracelet featuring a coin charm and a delicate flower design, showcasing elegance and intricate craftsmanship.",
                 "title": "Gold-Filled",
                 "description": "An elegant and accessible option that maintains the shine and appearance of solid gold, with high resistance to wear."
             },
             {
-                "img": "/aros/1.svg",
+                "img": "materials/acero-inoxidable.webp",
                 "alt_img": "Gold-plated earrings and a red-stone bracelet showcased together, highlighting their intricate designs and luxurious appearance.",
                 "title": "Stainless Steel",
                 "description": "Perfect for those looking for durability and corrosion resistance. Ideal for pieces worn daily without losing their shine."

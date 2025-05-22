@@ -1,7 +1,7 @@
 {
     "seo": {
         "title": "Melo Joyería - Joyas Artesanales",
-        "description": "Descubre Melo Joyería, joyería artesanal salvadoreña con piezas únicas en oro laminado, acero inoxidable, perlas y piedras naturales. Encuentra tu estilo",
+        "description": "Emprendimiento salvadoreño de joyería artesanal. Diseñamos piezas únicas que destacan por su originalidad y atención al detalle. Cada creación refleja elegancia, autenticidad y el arte de la expresión personal. Nuestra selección incluye tanto diseños propios como piezas cuidadosamente elegidas que complementan nuestra propuesta estética y de calidad.",
         "keywords": "Melo Joyería, joyería artesanal salvadoreña, joyería, artesanal, joyas únicas, estilo personal, accesorios"
     },
     "navbar": {
@@ -55,13 +55,13 @@
         "paragraph_list": "Nuestros materiales incluyen",
         "list": [
             {
-                "img": "/img/oro-laminado.svg",
+                "img": "/materials/oro-laminado.webp",
                 "alt_img": "Pulsera de oro con un charm de moneda y una flor, destacando su diseño elegante y detalles delicados.",
                 "title": "Oro Laminado",
                 "description": "Una opción elegante y accesible que mantiene el brillo y la apariencia del oro sólido, con una alta resistencia al desgaste."
             },
             {
-                "img": "/aros/1.svg",
+                "img": "materials/acero-inoxidable.webp",
                 "alt_img": "Conjunto de dos aretes dorados y una pulsera adornada con piedras rojas, exhibidos sobre un fondo liso.",
                 "title": "Acero Inoxidable",
                 "description": "Perfecto para quienes buscan durabilidad y resistencia a la corrosión. Ideal para piezas que se usan a diario sin perder su brillo."

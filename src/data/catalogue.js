@@ -1,66 +1,50 @@
 export const categoryImages = {
     "anillos":[
-        "anillos/1.svg",
-        "anillos/2.svg",
-        "anillos/3.svg",
-        "anillos/4.svg",
-        "anillos/5.svg",
-        "anillos/6.svg",
+        "anillos/1.webp",
+        "anillos/2.webp",
+        "anillos/3.webp",
+        "anillos/4.webp"
     ],
     "rings":[
-        "anillos/1.svg",
-        "anillos/2.svg",
-        "anillos/3.svg",
-        "anillos/4.svg",
-        "anillos/5.svg",
-        "anillos/6.svg",
+        "anillos/1.webp",
+        "anillos/2.webp",
+        "anillos/3.webp",
+        "anillos/4.webp"
     ],
     "aretes":[
-        "aros/1.svg",
-        "aros/2.svg",
-        "aros/3.svg",
-        "aros/4.svg",
-        "aros/5.svg",
+        "aros/1.webp",
+        "aros/2.webp",
+        "aros/3.webp",
+        "aros/4.webp"
     ],
     "earrings":[
-        "aros/1.svg",
-        "aros/2.svg",
-        "aros/3.svg",
-        "aros/4.svg",
-        "aros/5.svg",
+        "aros/1.webp",
+        "aros/2.webp",
+        "aros/3.webp",
+        "aros/4.webp"
     ],
     "collares y dijes":[
-        "collares/1.svg",
-        "collares/2.svg",
-        "collares/3.svg",
-        "collares/4.svg",
-        "collares/5.svg",
-        "collares/6.svg"
+        "collares/1.webp",
+        "collares/2.webp",
+        "collares/3.webp",
+        "collares/4.webp"
     ],
     "necklaces and charms":[
-        "collares/1.svg",
-        "collares/2.svg",
-        "collares/3.svg",
-        "collares/4.svg",
-        "collares/5.svg",
-        "collares/6.svg"
+        "collares/1.webp",
+        "collares/2.webp",
+        "collares/3.webp",
+        "collares/4.webp"
     ],
     "pulseras":[
-        "pulseras/1.svg",
-        "pulseras/2.svg",
-        "pulseras/3.svg",
-        "pulseras/4.svg",
-        "pulseras/5.svg",
-        "pulseras/6.svg",
-        "pulseras/7.svg",
+        "pulseras/1.webp",
+        "pulseras/2.webp",
+        "pulseras/3.webp",
+        "pulseras/4.webp"
     ],
     "bracelets":[
-        "pulseras/1.svg",
-        "pulseras/2.svg",
-        "pulseras/3.svg",
-        "pulseras/4.svg",
-        "pulseras/5.svg",
-        "pulseras/6.svg",
-        "pulseras/7.svg",
+        "pulseras/1.webp",
+        "pulseras/2.webp",
+        "pulseras/3.webp",
+        "pulseras/4.webp"
     ]
 }

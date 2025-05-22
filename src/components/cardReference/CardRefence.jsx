@@ -1,4 +1,3 @@
-import React from 'react';
 import "./cardReference.css";
 
 const CardReference = ({ image, altimg }) => {
