@@ -1,5 +1,7 @@
 ---
+import { getLocalizedAnchor } from "@/i18n/ui";
 import GalleryFooter from "./GalleryFooter.astro";
+
 
 const { lang } = Astro.params;
 const { translations } = Astro.props;
@@ -8,28 +10,31 @@ const { translations } = Astro.props;
 <section>
     <div class="footer-container">
         <div class="logo-footer-container">
-            <a class="logo-navigate" href="">
-                <img class="logo-footer" src={translations.footer.logo} alt={translations.footer.alt_logo}>
+            <a class="logo-navigate" href={`#${getLocalizedAnchor('home', lang)}`}>
+                <img class="logo-footer" src={translations.footer.logo} alt={translations.footer.alt_logo} />
             </a>
             <span>{translations.footer.paragraph}</span>
             <a class="social" href="https://www.instagram.com/melojoyeria/" target="_blank">
-                <img class="social-icon" src={translations.footer.socials[0].icon} alt={translations.footer.socials.alt} />
+                <img class="social-icon" src={translations.footer.socials[0].icon} alt={translations.footer.socials[0].alt} />
             </a>
         </div>
+        
         <div>
             <GalleryFooter />
         </div>
-        <div>
+        
+        <div class="footer-nav">
             <nav>
                 <ul>
-                    <li><a href="#home">{translations.footer.navbar[0].home}</a></li>
-                    <li><a href="#catalogue">{translations.footer.navbar[1].gallery}</a></li>
-                    <li><a href="#about">{translations.footer.navbar[2].about}</a></li>
-                    <li><a href="#contact">{translations.footer.navbar[3].contact}</a></li>
+                    <li><a href={`#${getLocalizedAnchor('home', lang)}`}>{translations.footer.navbar[0].home}</a></li>
+                    <li><a href={`#${getLocalizedAnchor('gallery', lang)}`}>{translations.footer.navbar[1].gallery}</a></li>
+                    <li><a href={`#${getLocalizedAnchor('about', lang)}`}>{translations.footer.navbar[2].about}</a></li>
+                    <li><a href={`#${getLocalizedAnchor('contact', lang)}`}>{translations.footer.navbar[3].contact}</a></li>
                 </ul>
             </nav>
         </div>
     </div>
+    
     <div class="footer-copyright">
         <span>{translations.footer.copyright}</span>
     </div>
