@@ -19,7 +19,7 @@
     "hero":{
         "logo": "/iconLogo/logo_black_completo.svg",
         "alt": "Melo Jewelry Logo",
-        "content": "Melo Jewellery is a Salvadoran handmade jewellery company. We design unique pieces that stand out for their originality and attention to detail. Each creation reflects elegance, authenticity and the art of personal expression.",
+        "content": "Salvadoran handmade jewellery company. We design unique pieces that stand out for their originality and attention to detail. Each creation reflects elegance, authenticity and the art of personal expression. Our selection includes both our own designs and carefully chosen pieces that complement our aesthetic and quality proposal.",
         "btn_cta": "Discover more on our Instagram",
         "img": "/img/hero-jewellery.webp",
         "alt_img": "An ornate box containing an array of gold jewelry pieces and shimmering pearls, highlighting luxury and elegance."
@@ -50,7 +50,7 @@
     },
     "materials": {
         "title": "Our Materials",
-        "paragraph": "At Melo Jewelry, we carefully select each material to ensure the quality, durability, and beauty of our pieces. We use materials that not only offer a sophisticated finish but also provide resistance and comfort for everyday wear.",
+        "paragraph": "Discover Melo Jewellery, handmade jewellery from El Salvador with unique pieces in laminated gold, stainless steel, pearls and natural stones. Find your style",
         "paragraph_list": "Our materials include",
         "list": [
             {
@@ -60,20 +60,26 @@
                 "description": "An elegant and accessible option that maintains the shine and appearance of solid gold, with high resistance to wear."
             },
             {
-                "img": "materials/acero-inoxidable.webp",
+                "img": "/materials/acero-inoxidable.webp",
                 "alt_img": "Gold-plated earrings and a red-stone bracelet showcased together, highlighting their intricate designs and luxurious appearance.",
                 "title": "Stainless Steel",
                 "description": "Perfect for those looking for durability and corrosion resistance. Ideal for pieces worn daily without losing their shine."
             },
             {
+                "img": "/materials/perlas-naturales.webp",
+                "alt_img": "A white pearl necklace elegantly displayed on a gold plate, showcasing its luster and fine craftsmanship.",
                 "title": "Natural Pearls",
                 "description": "Each pearl is unique and adds a touch of sophistication and femininity to our designs."
             },
             {
+                "img": "/materials/perlas_algodon.webp",
+                "alt_img": "A delicate necklace adorned with pearls and floral accents displayed on a white table.",
                 "title": "Cotton Pearls",
                 "description": "A lightweight and delicate alternative with a special texture that brings a distinctive charm to our jewelry."
             },
             {
+                "img": "/materials/piedras_naturales.webp",
+                "alt_img": "A green bracelet, gold ring, and earrings displayed on a white table surface.",
                 "title": "Natural Stones",
                 "description": "Elements with special meanings and energetic properties that turn each piece into an accessory full of personality and style."
             }
