@@ -1,7 +1,7 @@
 {
     "seo": {
         "title": "Melo Joyería - Joyas Artesanales",
-        "description": "Emprendimiento salvadoreño de joyería artesanal. Diseñamos piezas únicas que destacan por su originalidad y atención al detalle. Cada creación refleja elegancia, autenticidad y el arte de la expresión personal. Nuestra selección incluye tanto diseños propios como piezas cuidadosamente elegidas que complementan nuestra propuesta estética y de calidad.",
+        "description": "Descubre Melo Joyería, joyería artesanal salvadoreña con piezas únicas en oro laminado, acero inoxidable, perlas y piedras naturales. Encuentra tu estilo",
         "keywords": "Melo Joyería, joyería artesanal salvadoreña, joyería, artesanal, joyas únicas, estilo personal, accesorios"
     },
     "navbar": {
@@ -19,7 +19,7 @@
    "hero": {
         "logo": "/iconLogo/logo_black_completo.svg",
         "alt": "Logo Joyeria Melo",
-        "content": "Melo Joyería es un emprendimiento salvadoreño de joyería artesanal. Diseñamos piezas únicas que destacan por su originalidad y atención al detalle. Cada creación refleja elegancia, autenticidad y el arte de la expresión personal",
+        "content": "Emprendimiento salvadoreño de joyería artesanal. Diseñamos piezas únicas que destacan por su originalidad y atención al detalle. Cada creación refleja elegancia, autenticidad y el arte de la expresión personal. Nuestra selección incluye tanto diseños propios como piezas cuidadosamente elegidas que complementan nuestra propuesta estética y de calidad.",
         "btn_cta":"Descubre más en nuestro Instagram",
         "img": "/img/hero-jewellery.webp",
         "alt_img": "Caja abierta que contiene joyas de oro y perlas, destacando su brillo y elegancia en un fondo neutro."
@@ -61,20 +61,26 @@
                 "description": "Una opción elegante y accesible que mantiene el brillo y la apariencia del oro sólido, con una alta resistencia al desgaste."
             },
             {
-                "img": "materials/acero-inoxidable.webp",
+                "img": "/materials/acero-inoxidable.webp",
                 "alt_img": "Conjunto de dos aretes dorados y una pulsera adornada con piedras rojas, exhibidos sobre un fondo liso.",
                 "title": "Acero Inoxidable",
                 "description": "Perfecto para quienes buscan durabilidad y resistencia a la corrosión. Ideal para piezas que se usan a diario sin perder su brillo."
             },
             {
+                "img": "/materials/perlas-naturales.webp",
+                "alt_img": "Collar de perlas blancas sobre un plato dorado, exhibiendo elegancia y sofisticación.",
                 "title": "Perlas Naturales",
                 "description": "Cada perla es única y añade un toque de sofisticación y feminidad a nuestros diseños."
             },
             {
+                "img": "/materials/perlas_algodon.webp",
+                "alt_img": "Collar de perlas y flores sobre una mesa blanca.",
                 "title": "Perlas de Algodón",
                 "description": "Una alternativa ligera y delicada, con una textura especial que aporta un encanto distintivo a nuestras joyas."
             },
             {
+                "img": "/materials/piedras_naturales.webp",
+                "alt_img": "Pulsera verde, anillo dorado y aretes sobre una mesa blanca.",
                 "title": "Piedras Naturales",
                 "description": "Elementos con significados especiales y propiedades energéticas, que convierten cada pieza en un accesorio con personalidad y estilo."
             }
