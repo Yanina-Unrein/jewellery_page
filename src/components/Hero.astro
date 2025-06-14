@@ -10,14 +10,14 @@ const { translations } = Astro.props;
 <section class="hero" id={getLocalizedAnchor('home', lang)}>
   <div class="hero-content">
     <h1 class="hero-title">
-      <img class="logo-hero" src={translations.hero.logo} alt={translations.hero.alt} loading="lazy">
+      <img class="logo-hero" src={translations.hero.logo} alt={translations.hero.alt}  loading="eager" decoding="async">
     </h1>
     <p class="hero-text">{translations.hero.content}</p>
     <BtnLayout href="https://www.instagram.com/melojoyeria/" text={translations.hero.btn_cta} color="var(--linen)" class="hero-button" />
   </div>
   <div class="hero-image-container">
     <picture class="hero-image">
-      <img class="img-hero" src={translations.hero.img} alt={translations.hero.alt_img} loading="lazy">
+      <img class="img-hero" src={translations.hero.img} alt={translations.hero.alt_img} loading="eager" decoding="async" fetchpriority="high">
     </picture>
   </div>
 </section>
@@ -76,7 +76,7 @@ const { translations } = Astro.props;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 15px;
   width: 100%;
   height: 650px;
   padding: 0 10px;
@@ -155,6 +155,12 @@ p{
     width: 100%;
     height: 100%; 
     object-fit: cover; 
+  }
+}
+
+@media(max-width: 470px){
+  .hero-content h1{
+    padding-top: 30px;
   }
 }
 </style>

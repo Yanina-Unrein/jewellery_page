@@ -153,7 +153,7 @@ const MaterialSlider = ({ materials }) => {
         <div className="materials-grid">
           {materials.map((material, index) => (
             <div key={index} className="material-card">
-              <img src={material.img} alt={material.img_alt} className="material-image" />
+              <img src={material.img} alt={material.alt_img} className="material-image" />
               <h3>{material.title}</h3>
               <p>{material.description}</p>
             </div>
