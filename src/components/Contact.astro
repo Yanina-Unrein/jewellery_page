@@ -27,10 +27,11 @@ const contactInfo = translations.contact["contact-info"];
                 />
             ))}
             <p class="animate-item" style="--delay: 0.4s">{translations.contact.paragraph_cta}</p>
-            <BtnLayout href="https://www.instagram.com/melojoyeria/" class="contact-btn animate-item" text={translations.contact.btn} color="var(--linen)" style="--delay: 0.5s" />
+            <BtnLayout href="https://www.instagram.com/melojoyeria/" class="contact-btn animate-item" text={translations.contact.btn} color="var(--linen)" />
         </div>
         <div class="map-container animate-right">
             <iframe 
+                title="Mapa de ubicación de Melo Joyería en El Salvador" 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.27989115254!2d-89.72101228535188!3d13.794185665148034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6330171e456a75%3A0xf13fa4c0b9a4965d!2sEl%20Salvador!5e0!3m2!1ses!2ssv!4v1710381229276!5m2!1ses!2ssv" 
                 allowfullscreen="" 
                 loading="lazy" 
@@ -119,7 +120,7 @@ const contactInfo = translations.contact["contact-info"];
   }
   section {
     position: relative;
-    background-image: url("/img/background_contact.svg");
+    background-image: url("/img/background_contact.webp");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

@@ -1,7 +1,15 @@
 User-agent: *
-Disallow: /admin/
-Disallow: /carrito/
-Disallow: /checkout/
+Allow: /
+Disallow: /api/
+Disallow: /private/
+
+# Sitemaps
+Sitemap: https://melo.sv/sitemap.xml
+
+# Idioma (hreflang)
+User-agent: Googlebot
+Allow: /en/
 Allow: /
 
-Sitemap: https://melojoyeria.com/sitemap.xml
+# Crawling budget
+Crawl-delay: 2
